@@ -6,7 +6,6 @@
   <title>Portfolio</title>
 
   <style>
-    /* fake Windows desktop wallpaper */
     body {
       background-color: #008080;
       background-image: repeating-linear-gradient(
@@ -20,7 +19,7 @@
       font-size: 12px;
       color: #000000;
       margin: 0;
-      padding: 30px 0 40px;
+      padding: 30px 0 60px; /* leave space for fixed bar */
       text-align: center;
     }
 
@@ -33,7 +32,6 @@
       color: #800080;
     }
 
-    /* main window shell */
     .window {
       width: 900px;
       max-width: 95%;
@@ -48,7 +46,6 @@
       flex-direction: column;
     }
 
-    /* classic blue title bar */
     .title-bar {
       background-color: #000080;
       color: #ffffff;
@@ -107,33 +104,6 @@
       cursor: default;
     }
 
-    /* menu bar under title bar */
-    .menu-bar {
-      background-color: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-      font-size: 11px;
-      line-height: 18px;
-      text-align: left;
-      padding: 2px 6px;
-      display: flex;
-      gap: 16px;
-      color: #000000;
-      user-select: none;
-      font-family: "MS Sans Serif", Tahoma, sans-serif;
-    }
-
-    .menu-item {
-      cursor: default;
-    }
-
-    .menu-item:first-child {
-      text-decoration: underline;
-    }
-
-    /* main body */
     .window-body {
       padding: 12px;
       background-color: #c0c0c0;
@@ -143,7 +113,6 @@
       text-align: left;
     }
 
-    /* top intro info */
     .intro-block {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -176,7 +145,6 @@
       padding: 6px;
     }
 
-    /* filter / role selection */
     .filter-panel {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -220,7 +188,6 @@
       border-bottom-color: #000000;
     }
 
-    /* projects section */
     .projects-area {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -327,7 +294,6 @@
       min-height: 54px;
     }
 
-    /* footer / status region inside the window */
     .footer-area {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -339,10 +305,6 @@
       line-height: 1.5;
       color: #000000;
       text-align: left;
-    }
-
-    .footer-row {
-      margin-bottom: 8px;
     }
 
     .visit-line {
@@ -374,8 +336,12 @@
       color: #000000;
     }
 
-    /* status bar at the absolute bottom, like "Ready" in old apps */
+    /* fixed taskbar-style status bar */
     .status-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background-color: #c0c0c0;
       border-top: 2px solid #ffffff;
       border-left: 2px solid #ffffff;
@@ -393,6 +359,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+      z-index: 9999;
     }
 
     .status-left {
@@ -407,7 +374,7 @@
       border-right-color: #ffffff;
       border-bottom-color: #ffffff;
       height: 14px;
-      min-width: 60px;
+      min-width: 120px;
       font-size: 10px;
       line-height: 12px;
       text-align: center;
@@ -431,7 +398,6 @@
         width: 95%;
       }
     }
-
   </style>
 </head>
 
@@ -442,9 +408,7 @@
     <div class="title-bar">
       <div class="title-bar-left">
         <div class="title-icon">★</div>
-        <div>
-          YOUR NAME HERE - Film Credits
-        </div>
+        <div>YOUR NAME HERE – Film Credits</div>
       </div>
       <div class="title-buttons">
         <div class="title-btn">_</div>
@@ -456,21 +420,13 @@
     <div class="window-body">
 
       <div class="intro-block">
-        <div class="intro-name">
-          YOUR NAME HERE
-        </div>
-        <div class="intro-roles">
-          Writer   Director   Cinematographer   Editor
-        </div>
-        <div class="intro-joke">
-          Did you also expect me to be a web designer
-        </div>
+        <div class="intro-name">YOUR NAME HERE</div>
+        <div class="intro-roles">Writer   Director   Cinematographer   Editor</div>
+        <div class="intro-joke">Did you also expect me to be a web designer</div>
       </div>
 
       <div class="filter-panel">
-        <div class="filter-label">
-          Select credit type to filter projects
-        </div>
+        <div class="filter-label">Select credit type to filter projects</div>
         <div class="button-row">
           <button class="role-button active" data-filter="all">All Projects</button>
           <button class="role-button" data-filter="writer">Writer</button>
@@ -488,35 +444,21 @@
 
         <div class="cards-wrap" id="projectsArea">
 
-          <!-- PROJECT CARD 1 poster that links to IMDb -->
           <div class="project-card" data-roles="writer director">
-            <a
-              href="https://www.imdb.com/title/tt0000000/"
-              target="_blank"
-              style="text-decoration:none; color:#000000;"
-            >
+            <a href="https://www.imdb.com/title/tt0000000/" target="_blank" style="text-decoration:none; color:#000000;">
               <div class="card-frame">
                 <img src="stand-your-ground-still.jpg" alt="Stand Your Ground still" />
               </div>
             </a>
-
-            <div class="proj-title">
-              STAND YOUR GROUND
-            </div>
-
-            <div class="proj-role">
-              Feature film  
-              Writer   Director
-            </div>
-
+            <div class="proj-title">STAND YOUR GROUND</div>
+            <div class="proj-role">Feature film  Writer   Director</div>
             <div class="proj-desc">
               Thriller action feature starring Peter Stormare and Eric Roberts.  
               Worldwide release 2025.  
-              Click the image for IMDb page.
+              Click image for IMDb page.
             </div>
           </div>
 
-          <!-- PROJECT CARD 2 embedded trailer -->
           <div class="project-card" data-roles="cinematographer editor">
             <div class="card-frame">
               <iframe
@@ -526,85 +468,46 @@
                 allowfullscreen
               ></iframe>
             </div>
-
-            <div class="proj-title">
-              PROJECT TWO TITLE
-            </div>
-
-            <div class="proj-role">
-              Short film  
-              Cinematographer   Editor
-            </div>
-
+            <div class="proj-title">PROJECT TWO TITLE</div>
+            <div class="proj-role">Short film  Cinematographer   Editor</div>
             <div class="proj-desc">
-              Shot anamorphic.  
-              Practical fire light.  
-              Night exterior work.  
-              Festival selection.
+              Shot anamorphic. Practical fire light. Night exterior work. Festival selection.
             </div>
           </div>
 
-          <!-- PROJECT CARD 3 text only image -->
           <div class="project-card" data-roles="writer">
             <div class="card-frame">
               <img src="another-project-still.jpg" alt="Another Project still" />
             </div>
-
-            <div class="proj-title">
-              ANOTHER PROJECT
-            </div>
-
-            <div class="proj-role">
-              Series pilot  
-              Writer
-            </div>
-
-            <div class="proj-desc">
-              Pilot script and world building.  
-              Developed for streaming.
-            </div>
+            <div class="proj-title">ANOTHER PROJECT</div>
+            <div class="proj-role">Series pilot  Writer</div>
+            <div class="proj-desc">Pilot script and world building. Developed for streaming.</div>
           </div>
 
         </div>
       </div>
 
       <div class="footer-area">
-
-        <div class="footer-row">
-          Contact and work inquiries  
-          <br />
-          <a href="mailto:you@yourdomain.com">you@yourdomain.com</a>
-          <br />
-          Bulgaria   Europe   Earth
-        </div>
-
         <div class="visit-line">
           Visitor number
           <span class="counter-box" id="counterBox">000042</span>
         </div>
-
-        <div class="update-line">
-          Last updated October 31 1998
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="status-bar">
-      <div class="status-left">
-        <div>Status:</div>
-        <div class="status-box">Ready</div>
-      </div>
-      <div class="status-right" style="font-size:10px; font-family:'Courier New', monospace;">
-        © 1998-2025 YOUR NAME
+        <div class="update-line">Last updated October 31 1998</div>
       </div>
     </div>
+  </div>
 
+  <div class="status-bar">
+    <div class="status-left">
+      <div>Contact:</div>
+      <div class="status-box">you@yourdomain.com</div>
+    </div>
+    <div class="status-right" style="font-size:10px; font-family:'Courier New', monospace;">
+      Status: Ready
+    </div>
   </div>
 
   <script>
-    // filter logic
     const roleButtons = document.querySelectorAll(".role-button");
     const projectCards = document.querySelectorAll(".project-card");
 
@@ -612,21 +515,14 @@
       btn.addEventListener("click", () => {
         roleButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
         const filter = btn.getAttribute("data-filter");
-
         projectCards.forEach(card => {
           const roles = card.getAttribute("data-roles").split(" ");
-          if (filter === "all" || roles.includes(filter)) {
-            card.style.display = "inline-block";
-          } else {
-            card.style.display = "none";
-          }
+          card.style.display = filter === "all" || roles.includes(filter) ? "inline-block" : "none";
         });
       });
     });
 
-    // little fake counter just to feel alive
     const box = document.getElementById("counterBox");
     if (box) {
       const base = 1337;
