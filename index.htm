@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>MY SUPER ADVANCED HOLLYWOOD WEBSITE</title>
+
+  <style>
+    body {
+      background-color: #ffcc99;
+      color: #000000;
+      font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
+      margin: 0;
+      text-align: center;
+    }
+
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 4px ridge #0000ff;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+
+    .headline-box {
+      background-color: #ffff00;
+      border: 3px dashed #ff0000;
+      padding: 8px;
+      margin-bottom: 12px;
+    }
+
+    .headline-text {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .tiny-note {
+      font-size: 11px;
+    }
+
+    .name-area {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0000aa;
+      text-shadow: 1px 1px #ffff00;
+      margin: 10px 0 2px;
+    }
+
+    .sub-area {
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .role-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .role-button {
+      background-color: #0000aa;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      border: 3px outset #dddddd;
+      padding: 6px 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .role-button.active {
+      background-color: #ff0000;
+      color: #ffff00;
+      border: 3px inset #000000;
+    }
+
+    /* project list wrapper */
+    .projects-area {
+      background-color: #ffffff;
+      border: 5px groove #00ff00;
+      padding: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* each project card */
+    .project-card {
+      display: inline-block;
+      width: 260px;
+      max-width: 100%;
+      background-color: #ffffe6;
+      border: 3px outset #999999;
+      padding: 6px;
+      margin: 6px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .thumb-box {
+      background-color: #000000;
+      border: 2px solid #00ff00;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 0;
+      display: block;
+    }
+
+    .thumb-box iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .proj-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #0000aa;
+      margin-bottom: 4px;
+    }
+
+    .proj-role {
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .proj-desc {
+      font-size: 11px;
+      color: #000000;
+      background-color: #ffffff;
+      border: 1px dotted #000000;
+      padding: 4px;
+      text-align: left;
+      line-height: 1.3;
+      min-height: 48px;
+    }
+
+    .under-construction {
+      font-size: 11px;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+
+    .contact-block {
+      border-top: 2px dotted #000000;
+      padding-top: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .contact-block a {
+      color: #0000ff;
+    }
+
+    .copyright {
+      font-size: 10px;
+      color: #444444;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .headline-text {
+        font-size: 16px;
+      }
+      .name-area {
+        font-size: 18px;
+      }
+      .role-button {
+        font-size: 11px;
+        padding: 6px 8px;
+      }
+      .project-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <div class="headline-box">
+      <div class="headline-text">
+        Did you also expect me to be a web designer
+      </div>
+      <div class="tiny-note">
+        This site is proudly optimized for Netscape Navigator and extremely impressed parents
+      </div>
+    </div>
+
+    <div class="name-area">
+      YOUR NAME HERE
+    </div>
+    <div class="sub-area">
+      Writer  Director  Cinematographer  Editor
+      <br />
+      Click a role below to filter projects
+    </div>
+
+    <!-- role filter buttons -->
+    <div class="role-bar">
+      <button class="role-button active" data-filter="all">All</button>
+      <button class="role-button" data-filter="writer">Writer</button>
+      <button class="role-button" data-filter="director">Director</button>
+      <button class="role-button" data-filter="cinematographer">Cinematographer</button>
+      <button class="role-button" data-filter="editor">Editor</button>
+    </div>
+
+    <!-- project list -->
+    <div class="projects-area" id="projectsArea">
+
+      <!-- PROJECT CARD EXAMPLE WITH IMAGE THAT LINKS OUT -->
+      <div class="project-card" data-roles="writer director">
+        <a
+          href="https://www.imdb.com/title/tt0000000/"
+          target="_blank"
+          class="thumb-box"
+          style="display:block; text-decoration:none;"
+        >
+          <div class="thumb-box">
+            <img src="stand-your-ground-still.jpg" alt="Stand Your Ground poster or still" />
+          </div>
+        </a>
+
+        <div class="proj-title">
+          STAND YOUR GROUND
+        </div>
+
+        <div class="proj-role">
+          Feature film  
+          Writer  Director
+        </div>
+
+        <div class="proj-desc">
+          Thriller action feature starring Peter Stormare and Eric Roberts  
+          Worldwide release 2025
+        </div>
+      </div>
+
+
+      <!-- PROJECT CARD EXAMPLE WITH EMBEDDED TRAILER INSTEAD OF IMAGE -->
+      <div class="project-card" data-roles="cinematographer editor">
+        <div class="thumb-box">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEOIDHERE?rel=0&modestbranding=1"
+            title="Project trailer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="proj-title">
+          TITLE OF PROJECT TWO
+        </div>
+
+        <div class="proj-role">
+          Short film  
+          Cinematographer  Editor
+        </div>
+
+        <div class="proj-desc">
+          Festival selection  
+          Shot on anamorphic  
+          Night exteriors and practical fire light
+        </div>
+      </div>
+
+
+      <!-- DUPLICATE BLOCKS LIKE THE TWO ABOVE FOR MORE PROJECTS -->
+
+    </div>
+
+    <div class="under-construction">
+      <br />
+      Site last updated October 31 1998
+      <br />
+      Please sign my guest book
+      <br />
+      <img
+        src="https://media.tenor.com/g2-ConstructionGIF.gif"
+        alt="UNDER CONSTRUCTION"
+        style="max-height:40px; vertical-align:middle;"
+        onerror="this.style.display='none';"
+      />
+    </div>
+
+    <div class="contact-block">
+      Contact and work inquiries
+      <br />
+      <a href="mailto:you@yourdomain.com">you@yourdomain.com</a>
+      <br />
+      Bulgaria  Europe  Earth
+    </div>
+
+    <div class="copyright">
+      (c) 1998 - 2025 YOUR NAME  
+      Please do not tape over this recording
+    </div>
+
+  </div>
+
+  <script>
+    // role filter logic
+    const roleButtons = document.querySelectorAll(".role-button");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    roleButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // visual state
+        roleButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+
+        projectCards.forEach(card => {
+          const roles = card.getAttribute("data-roles").split(" ");
+          if (filter === "all" || roles.includes(filter)) {
+            card.style.display = "inline-block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
