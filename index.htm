@@ -6,13 +6,22 @@
   <title>Portfolio</title>
 
   <style>
+    /* fake Windows desktop wallpaper */
     body {
-      background-color: #c0c0c0;
+      background-color: #008080;
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08) 0px,
+        rgba(255,255,255,0.08) 1px,
+        rgba(0,0,0,0) 1px,
+        rgba(0,0,0,0) 4px
+      );
       font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
       font-size: 12px;
       color: #000000;
       margin: 0;
-      padding: 20px;
+      padding: 30px 0 40px;
+      text-align: center;
     }
 
     a {
@@ -24,17 +33,22 @@
       color: #800080;
     }
 
+    /* main window shell */
     .window {
       width: 900px;
       max-width: 95%;
       margin: 0 auto;
+      background-color: #c0c0c0;
       border: 2px solid #000000;
       box-shadow:
         1px 1px 0 #ffffff,
-        2px 2px 0 #000000;
-      background-color: #c0c0c0;
+        2px 2px 0 #000000,
+        6px 6px 0 rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
     }
 
+    /* classic blue title bar */
     .title-bar {
       background-color: #000080;
       color: #ffffff;
@@ -93,13 +107,43 @@
       cursor: default;
     }
 
-    .window-body {
-      padding: 12px;
-      box-sizing: border-box;
+    /* menu bar under title bar */
+    .menu-bar {
       background-color: #c0c0c0;
       border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      font-size: 11px;
+      line-height: 18px;
+      text-align: left;
+      padding: 2px 6px;
+      display: flex;
+      gap: 16px;
+      color: #000000;
+      user-select: none;
+      font-family: "MS Sans Serif", Tahoma, sans-serif;
     }
 
+    .menu-item {
+      cursor: default;
+    }
+
+    .menu-item:first-child {
+      text-decoration: underline;
+    }
+
+    /* main body */
+    .window-body {
+      padding: 12px;
+      background-color: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      flex: 1 1 auto;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    /* top intro info */
     .intro-block {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -107,7 +151,6 @@
       background-color: #c0c0c0;
       padding: 10px;
       margin-bottom: 12px;
-      text-align: left;
     }
 
     .intro-name {
@@ -133,6 +176,7 @@
       padding: 6px;
     }
 
+    /* filter / role selection */
     .filter-panel {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -140,7 +184,6 @@
       background-color: #c0c0c0;
       padding: 10px;
       margin-bottom: 12px;
-      text-align: left;
     }
 
     .filter-label {
@@ -177,13 +220,13 @@
       border-bottom-color: #000000;
     }
 
+    /* projects section */
     .projects-area {
       border: 2px solid #ffffff;
       border-right-color: #808080;
       border-bottom-color: #808080;
       background-color: #c0c0c0;
       padding: 10px;
-      text-align: left;
     }
 
     .projects-header {
@@ -284,6 +327,7 @@
       min-height: 54px;
     }
 
+    /* footer / status region inside the window */
     .footer-area {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -330,13 +374,61 @@
       color: #000000;
     }
 
+    /* status bar at the absolute bottom, like "Ready" in old apps */
+    .status-bar {
+      background-color: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      height: 22px;
+      line-height: 20px;
+      font-size: 11px;
+      color: #000000;
+      font-family: "MS Sans Serif", Tahoma, sans-serif;
+      text-align: left;
+      padding: 0 6px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-box {
+      background-color: #ffffff;
+      border: 2px solid #808080;
+      border-right-color: #ffffff;
+      border-bottom-color: #ffffff;
+      height: 14px;
+      min-width: 60px;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      font-family: "Courier New", monospace;
+      color: #000000;
+      padding: 0 4px;
+      box-sizing: border-box;
+    }
+
     @media (max-width: 480px) {
       .role-button {
         min-width: auto;
         flex: 1 1 auto;
       }
+
       .project-card {
         width: calc(100% - 16px);
+      }
+
+      .window {
+        width: 95%;
       }
     }
 
@@ -351,7 +443,7 @@
       <div class="title-bar-left">
         <div class="title-icon">★</div>
         <div>
-          YOUR NAME HERE
+          YOUR NAME HERE - Film Credits
         </div>
       </div>
       <div class="title-buttons">
@@ -359,6 +451,13 @@
         <div class="title-btn">▢</div>
         <div class="title-btn">X</div>
       </div>
+    </div>
+
+    <div class="menu-bar">
+      <div class="menu-item">File</div>
+      <div class="menu-item">Edit</div>
+      <div class="menu-item">View</div>
+      <div class="menu-item">Help</div>
     </div>
 
     <div class="window-body">
@@ -396,7 +495,7 @@
 
         <div class="cards-wrap" id="projectsArea">
 
-          <!-- PROJECT CARD 1 with poster that links to IMDb -->
+          <!-- PROJECT CARD 1 poster that links to IMDb -->
           <div class="project-card" data-roles="writer director">
             <a
               href="https://www.imdb.com/title/tt0000000/"
@@ -424,7 +523,7 @@
             </div>
           </div>
 
-          <!-- PROJECT CARD 2 with embedded trailer -->
+          <!-- PROJECT CARD 2 embedded trailer -->
           <div class="project-card" data-roles="cinematographer editor">
             <div class="card-frame">
               <iframe
@@ -452,7 +551,7 @@
             </div>
           </div>
 
-          <!-- PROJECT CARD 3 text only credit example -->
+          <!-- PROJECT CARD 3 text only image -->
           <div class="project-card" data-roles="writer">
             <div class="card-frame">
               <img src="another-project-still.jpg" alt="Another Project still" />
@@ -498,6 +597,17 @@
       </div>
 
     </div>
+
+    <div class="status-bar">
+      <div class="status-left">
+        <div>Status:</div>
+        <div class="status-box">Ready</div>
+      </div>
+      <div class="status-right" style="font-size:10px; font-family:'Courier New', monospace;">
+        © 1998-2025 YOUR NAME
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -523,7 +633,7 @@
       });
     });
 
-    // fake visitor counter vibe
+    // little fake counter just to feel alive
     const box = document.getElementById("counterBox");
     if (box) {
       const base = 1337;
