@@ -3,60 +3,82 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>MY SUPER ADVANCED HOLLYWOOD WEBSITE</title>
+  <title>WELCOME TO MY MOVIE ZONE</title>
 
   <style>
     body {
-      background-color: #ffcc99;
+      /* tiled background classic */
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          #0066ff 0 10px,
+          #000000 10px 20px
+        );
       color: #000000;
       font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
       margin: 0;
       text-align: center;
     }
 
-    .page-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-      border: 4px ridge #0000ff;
-      background-color: #ffffff;
-      padding: 10px;
+    a {
+      color: #0000ff;
+    }
+    a:visited {
+      color: #660099;
     }
 
-    .headline-box {
+    /* outer table frame like old sites */
+    .main-table {
+      margin: 20px auto;
+      width: 900px;
+      max-width: 95%;
+      border: 6px ridge #ff0000;
+      background-color: #ffffff;
+    }
+
+    .inner-cell {
+      border: 4px inset #00ff00;
+      background-color: #ffffcc;
+      padding: 8px;
+    }
+
+    .scroll-banner {
       background-color: #ffff00;
       border: 3px dashed #ff0000;
-      padding: 8px;
-      margin-bottom: 12px;
-    }
-
-    .headline-text {
-      font-size: 18px;
+      margin-bottom: 10px;
+      padding: 4px;
+      color: #000000;
+      font-size: 14px;
       font-weight: bold;
     }
 
-    .tiny-note {
-      font-size: 11px;
+    .name-box {
+      background-color: #ffffff;
+      border: 3px outset #0000ff;
+      padding: 6px;
+      margin-bottom: 6px;
     }
 
-    .name-area {
-      font-size: 20px;
+    .name-line {
+      font-size: 22px;
       font-weight: bold;
       color: #0000aa;
       text-shadow: 1px 1px #ffff00;
-      margin: 10px 0 2px;
     }
 
-    .sub-area {
+    .sub-line {
       font-size: 13px;
-      margin-bottom: 14px;
+      color: #000000;
+      margin-top: 4px;
     }
 
+    /* role buttons bar */
     .role-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 16px;
+      background-color: #000000;
+      border: 4px groove #00ff00;
+      padding: 6px;
+      margin: 10px 0 14px;
+      text-align: center;
     }
 
     .role-button {
@@ -68,6 +90,8 @@
       padding: 6px 10px;
       cursor: pointer;
       text-transform: uppercase;
+      margin: 2px;
+      font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
     }
 
     .role-button.active {
@@ -76,16 +100,27 @@
       border: 3px inset #000000;
     }
 
-    /* project list wrapper */
+    /* projects board */
     .projects-area {
       background-color: #ffffff;
-      border: 5px groove #00ff00;
+      border: 5px groove #0000ff;
       padding: 8px;
-      margin-bottom: 20px;
       text-align: center;
     }
 
-    /* each project card */
+    .projects-title-row {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000000;
+      background-color: #ffcc00;
+      border: 3px ridge #ff0000;
+      padding: 6px;
+      margin: 0 auto 8px;
+      max-width: 300px;
+      font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
+    }
+
+    /* cards laid out like old school 3 column gif gallery */
     .project-card {
       display: inline-block;
       width: 260px;
@@ -96,13 +131,14 @@
       margin: 6px;
       vertical-align: top;
       text-align: center;
+      font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
     }
 
     .thumb-box {
       background-color: #000000;
       border: 2px solid #00ff00;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       margin-bottom: 6px;
       position: relative;
       overflow: hidden;
@@ -125,59 +161,91 @@
     }
 
     .proj-title {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
       color: #0000aa;
+      background-color: #ffffff;
+      border: 2px dotted #0000aa;
       margin-bottom: 4px;
+      padding: 2px;
     }
 
     .proj-role {
       font-size: 11px;
       margin-bottom: 6px;
+      color: #000000;
+      font-weight: bold;
     }
 
     .proj-desc {
       font-size: 11px;
       color: #000000;
       background-color: #ffffff;
-      border: 1px dotted #000000;
+      border: 1px dashed #ff0000;
       padding: 4px;
       text-align: left;
       line-height: 1.3;
       min-height: 48px;
     }
 
+    /* divider gif strip look */
+    .divider-row {
+      margin: 16px 0;
+      text-align: center;
+      font-size: 0;
+    }
+
+    .divider-row img {
+      max-height: 24px;
+      image-rendering: pixelated;
+    }
+
+    /* footer area */
+    .footer-box {
+      background-color: #ffffcc;
+      border: 3px inset #000000;
+      padding: 10px;
+      margin-top: 20px;
+      text-align: center;
+      font-family: "Comic Sans MS", "Comic Sans", "Arial", sans-serif;
+    }
+
     .under-construction {
       font-size: 11px;
-      margin-bottom: 20px;
       color: #333333;
+      margin-bottom: 8px;
     }
 
     .contact-block {
-      border-top: 2px dotted #000000;
-      padding-top: 8px;
       font-size: 12px;
       line-height: 1.4;
-      margin-bottom: 20px;
+      color: #000000;
+      margin-bottom: 10px;
     }
 
-    .contact-block a {
-      color: #0000ff;
+    .counter-area {
+      font-size: 10px;
+      color: #000000;
+      margin-top: 10px;
+    }
+
+    .counter-box {
+      display: inline-block;
+      background-color: #000000;
+      border: 2px outset #00ff00;
+      color: #00ff00;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      padding: 4px 6px;
     }
 
     .copyright {
       font-size: 10px;
       color: #444444;
-      margin-bottom: 20px;
+      margin-top: 10px;
     }
 
     @media (max-width: 480px) {
-      .headline-text {
-        font-size: 16px;
-      }
-      .name-area {
-        font-size: 18px;
-      }
       .role-button {
         font-size: 11px;
         padding: 6px 8px;
@@ -186,132 +254,197 @@
         width: 90%;
       }
     }
+
+    /* blink effect recreation if browser kills the blink tag */
+    .blink {
+      animation: blinker 1s step-start infinite;
+    }
+
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="page-wrapper">
+  <table class="main-table" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="inner-cell">
 
-    <div class="headline-box">
-      <div class="headline-text">
-        Did you also expect me to be a web designer
-      </div>
-      <div class="tiny-note">
-        This site is proudly optimized for Netscape Navigator and extremely impressed parents
-      </div>
-    </div>
+        <!-- marquee announcement like CHECK OUT MY NEW MOVIE -->
+        <div class="scroll-banner">
+          <marquee behavior="scroll" direction="left" scrollamount="4">
+            BREAKING NEWS This website was handcrafted using state of the art late nineteen nineties technology
+            PLEASE BOOK ME FOR REAL WORK
+          </marquee>
+        </div>
 
-    <div class="name-area">
-      YOUR NAME HERE
-    </div>
-    <div class="sub-area">
-      Writer  Director  Cinematographer  Editor
-      <br />
-      Click a role below to filter projects
-    </div>
-
-    <!-- role filter buttons -->
-    <div class="role-bar">
-      <button class="role-button active" data-filter="all">All</button>
-      <button class="role-button" data-filter="writer">Writer</button>
-      <button class="role-button" data-filter="director">Director</button>
-      <button class="role-button" data-filter="cinematographer">Cinematographer</button>
-      <button class="role-button" data-filter="editor">Editor</button>
-    </div>
-
-    <!-- project list -->
-    <div class="projects-area" id="projectsArea">
-
-      <!-- PROJECT CARD EXAMPLE WITH IMAGE THAT LINKS OUT -->
-      <div class="project-card" data-roles="writer director">
-        <a
-          href="https://www.imdb.com/title/tt0000000/"
-          target="_blank"
-          class="thumb-box"
-          style="display:block; text-decoration:none;"
-        >
-          <div class="thumb-box">
-            <img src="stand-your-ground-still.jpg" alt="Stand Your Ground poster or still" />
+        <!-- name area -->
+        <div class="name-box">
+          <div class="name-line">
+            <span class="blink">YOUR NAME HERE</span>
           </div>
-        </a>
-
-        <div class="proj-title">
-          STAND YOUR GROUND
+          <div class="sub-line">
+            Writer  Director  Cinematographer  Editor
+            <br />
+            Did you also expect me to be a web designer
+          </div>
         </div>
 
-        <div class="proj-role">
-          Feature film  
-          Writer  Director
+        <!-- role filter bar -->
+        <div class="role-bar">
+          <button class="role-button active" data-filter="all">All Projects</button>
+          <button class="role-button" data-filter="writer">Writer</button>
+          <button class="role-button" data-filter="director">Director</button>
+          <button class="role-button" data-filter="cinematographer">Cinematographer</button>
+          <button class="role-button" data-filter="editor">Editor</button>
         </div>
 
-        <div class="proj-desc">
-          Thriller action feature starring Peter Stormare and Eric Roberts  
-          Worldwide release 2025
-        </div>
-      </div>
-
-
-      <!-- PROJECT CARD EXAMPLE WITH EMBEDDED TRAILER INSTEAD OF IMAGE -->
-      <div class="project-card" data-roles="cinematographer editor">
-        <div class="thumb-box">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEOIDHERE?rel=0&modestbranding=1"
-            title="Project trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+        <!-- label above the gallery -->
+        <div class="projects-title-row">
+          FEATURED PROJECTS
         </div>
 
-        <div class="proj-title">
-          TITLE OF PROJECT TWO
+        <!-- project cards gallery -->
+        <div class="projects-area" id="projectsArea">
+
+          <!-- first project card with poster image that links to imdb -->
+          <div class="project-card" data-roles="writer director">
+            <a
+              href="https://www.imdb.com/title/tt0000000/"
+              target="_blank"
+              style="text-decoration:none; color:inherit;"
+            >
+              <div class="thumb-box">
+                <img src="stand-your-ground-still.jpg" alt="Stand Your Ground still" />
+              </div>
+            </a>
+
+            <div class="proj-title">
+              STAND YOUR GROUND
+            </div>
+
+            <div class="proj-role">
+              Feature film
+              <br />
+              Writer  Director
+            </div>
+
+            <div class="proj-desc">
+              Thriller action feature starring Peter Stormare and Eric Roberts
+              Worldwide release 2025
+              Click image for IMDb
+            </div>
+          </div>
+
+          <!-- second card with embedded trailer -->
+          <div class="project-card" data-roles="cinematographer editor">
+            <div class="thumb-box">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEOIDHERE?rel=0&modestbranding=1"
+                title="Project trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <div class="proj-title">
+              PROJECT TWO TITLE
+            </div>
+
+            <div class="proj-role">
+              Short film
+              <br />
+              Cinematographer  Editor
+            </div>
+
+            <div class="proj-desc">
+              Shot anamorphic
+              Night exteriors and practical fire light
+              Festival selection
+            </div>
+          </div>
+
+          <!-- duplicate this block for more projects -->
+          <div class="project-card" data-roles="writer">
+            <div class="thumb-box">
+              <img src="another-project-still.jpg" alt="Another Project still" />
+            </div>
+
+            <div class="proj-title">
+              ANOTHER PROJECT
+            </div>
+
+            <div class="proj-role">
+              Series pilot
+              <br />
+              Writer
+            </div>
+
+            <div class="proj-desc">
+              Pilot script and world building
+              Produced for streaming
+            </div>
+          </div>
+
         </div>
 
-        <div class="proj-role">
-          Short film  
-          Cinematographer  Editor
+        <!-- retro gif divider -->
+        <div class="divider-row">
+          <img src="https://media.tenor.com/NeonLineGIF.gif"
+               alt="cool divider"
+               onerror="this.style.display='none';" />
+          <img src="https://media.tenor.com/NeonLineGIF.gif"
+               alt="cool divider"
+               onerror="this.style.display='none';" />
+          <img src="https://media.tenor.com/NeonLineGIF.gif"
+               alt="cool divider"
+               onerror="this.style.display='none';" />
         </div>
 
-        <div class="proj-desc">
-          Festival selection  
-          Shot on anamorphic  
-          Night exteriors and practical fire light
+        <!-- footer with under construction and counter -->
+        <div class="footer-box">
+
+          <div class="under-construction">
+            <img
+              src="https://media.tenor.com/g2-ConstructionGIF.gif"
+              alt="UNDER CONSTRUCTION"
+              style="max-height:40px; vertical-align:middle;"
+              onerror="this.style.display='none';"
+            />
+            <br />
+            This site is currently under construction
+            <br />
+            Last updated October 31 1998
+          </div>
+
+          <div class="contact-block">
+            Contact and work inquiries
+            <br />
+            <a href="mailto:you@yourdomain.com">you@yourdomain.com</a>
+            <br />
+            Bulgaria  Europe  Earth
+          </div>
+
+          <div class="counter-area">
+            Visitor number
+            <div class="counter-box" id="counterBox">
+              000042
+            </div>
+          </div>
+
+          <div class="copyright">
+            Copyright 1998 2025 YOUR NAME
+            <br />
+            Please do not tape over this recording
+          </div>
+
         </div>
-      </div>
 
-
-      <!-- DUPLICATE BLOCKS LIKE THE TWO ABOVE FOR MORE PROJECTS -->
-
-    </div>
-
-    <div class="under-construction">
-      <br />
-      Site last updated October 31 1998
-      <br />
-      Please sign my guest book
-      <br />
-      <img
-        src="https://media.tenor.com/g2-ConstructionGIF.gif"
-        alt="UNDER CONSTRUCTION"
-        style="max-height:40px; vertical-align:middle;"
-        onerror="this.style.display='none';"
-      />
-    </div>
-
-    <div class="contact-block">
-      Contact and work inquiries
-      <br />
-      <a href="mailto:you@yourdomain.com">you@yourdomain.com</a>
-      <br />
-      Bulgaria  Europe  Earth
-    </div>
-
-    <div class="copyright">
-      (c) 1998 - 2025 YOUR NAME  
-      Please do not tape over this recording
-    </div>
-
-  </div>
+      </td>
+    </tr>
+  </table>
 
   <script>
     // role filter logic
@@ -320,7 +453,7 @@
 
     roleButtons.forEach(btn => {
       btn.addEventListener("click", () => {
-        // visual state
+        // update button visual
         roleButtons.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
@@ -336,6 +469,17 @@
         });
       });
     });
+
+    // fake visitor counter just for the vibe
+    // simple random number so it looks alive
+    const box = document.getElementById("counterBox");
+    if (box) {
+      const base = 12345;
+      const randomBump = Math.floor(Math.random() * 500);
+      const total = base + randomBump;
+      // pad to 6 digits like old counters
+      box.textContent = total.toString().padStart(6, "0");
+    }
   </script>
 
 </body>
