@@ -113,10 +113,17 @@
       text-align: left;
     }
 
+    /* FLEX GRID FOR PROJECTS */
     .cards-wrap {
-  max-width: 960px;   /* was 700 or undefined before */
-  margin: 0 auto;
-}
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: left;
+    }
 
     .intro-block {
       border: 2px solid #ffffff;
@@ -221,41 +228,36 @@
         -1px -1px 0 #ffffff;
     }
 
-    .cards-wrap {
-      text-align: left;
-    }
-
     .project-card {
-      display: inline-block;
-      vertical-align: top;
-      width: 420px;
-      max-width: 100%;
       background-color: #c0c0c0;
       border: 2px solid #ffffff;
       border-right-color: #808080;
       border-bottom-color: #808080;
-      padding: 8px;
-      margin: 10px;
+      box-sizing: border-box;
+      font-family: "MS Sans Serif", Tahoma, sans-serif;
       font-size: 11px;
       color: #000000;
-      font-family: "MS Sans Serif", Tahoma, sans-serif;
-      box-sizing: border-box;
+      padding: 8px;
+
+      /* layout */
+      flex: 0 1 300px;
+      max-width: 300px;
     }
-.project-card.wide {
-  display: block;
-  width: 100%;
-  max-width: 900px;
-  margin: 12px auto;
-}
+
+    .project-card.wide {
+      flex: 0 1 600px;
+      max-width: 600px;
+    }
+
     .project-card:hover {
-  background-color: #d0d0d0;
-  border: 2px solid #000080;
-  border-right-color: #ffffff;
-  border-bottom-color: #ffffff;
-  cursor: pointer;
-  transform: translateY(-2px);
-  box-shadow: 2px 2px 0 #000000;
-}
+      background-color: #d0d0d0;
+      border: 2px solid #000080;
+      border-right-color: #ffffff;
+      border-bottom-color: #ffffff;
+      cursor: pointer;
+      transform: translateY(-2px);
+      box-shadow: 2px 2px 0 #000000;
+    }
 
     .card-frame {
       background-color: #ffffff;
@@ -355,60 +357,60 @@
       color: #000000;
     }
 
-    /* fixed taskbar-style status bar */
-   /* fixed blue taskbar-style status bar */
-.status-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, #000080 0%, #000060 100%);
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #202020;
-  border-bottom: 2px solid #202020;
-  height: 26px;
-  line-height: 22px;
-  font-size: 12px;
-  color: #ffffff;
-  font-family: "MS Sans Serif", Tahoma, sans-serif;
-  text-align: left;
-  padding: 0 10px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  box-shadow: 0 -1px 0 #000 inset, 0 0 6px rgba(0,0,0,0.6);
-  z-index: 9999;
-}
+    /* fixed blue taskbar-style status bar */
+    .status-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, #000080 0%, #000060 100%);
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #202020;
+      border-bottom: 2px solid #202020;
+      height: 26px;
+      line-height: 22px;
+      font-size: 12px;
+      color: #ffffff;
+      font-family: "MS Sans Serif", Tahoma, sans-serif;
+      text-align: left;
+      padding: 0 10px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 -1px 0 #000 inset, 0 0 6px rgba(0,0,0,0.6);
+      z-index: 9999;
+    }
 
-.status-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.status-box {
-  background-color: #ffff80; /* pale yellow highlight */
-  border: 2px solid #808080;
-  border-right-color: #ffffff;
-  border-bottom-color: #ffffff;
-  height: 16px;
-  min-width: 180px;
-  font-size: 11px;
-  line-height: 14px;
-  text-align: center;
-  font-family: "Courier New", monospace;
-  color: #000000;
-  padding: 0 6px;
-  box-sizing: border-box;
-  animation: blinkCursor 1.5s steps(1) infinite;
-}
+    .status-box {
+      background-color: #ffff80; /* pale yellow highlight */
+      border: 2px solid #808080;
+      border-right-color: #ffffff;
+      border-bottom-color: #ffffff;
+      height: 16px;
+      min-width: 180px;
+      font-size: 11px;
+      line-height: 14px;
+      text-align: center;
+      font-family: "Courier New", monospace;
+      color: #000000;
+      padding: 0 6px;
+      box-sizing: border-box;
+      animation: blinkCursor 1.5s steps(1) infinite;
+    }
 
-@keyframes blinkCursor {
-  50% { border-right-color: #000000; }
-}
+    @keyframes blinkCursor {
+      50% { border-right-color: #000000; }
+    }
+
     @media (max-width: 480px) {
       .role-button {
         min-width: auto;
@@ -416,7 +418,13 @@
       }
 
       .project-card {
-        width: calc(100% - 16px);
+        flex: 0 1 100%;
+        max-width: 100%;
+      }
+
+      .project-card.wide {
+        flex: 0 1 100%;
+        max-width: 100%;
       }
 
       .window {
@@ -448,8 +456,9 @@
         <div class="intro-name">Sergey Zhelezko</div>
         <div class="intro-roles">Writer   Director   Cinematographer   Editor</div>
         <div class="intro-joke" style="text-align:center; margin-top:6px;">
-  Did you also expect me to be a web designer?
-</div>
+          Did you also expect me to be a web designer?
+        </div>
+      </div>
 
       <div class="filter-panel">
         <div class="filter-label">Select credit type to filter projects</div>
@@ -469,8 +478,9 @@
         </div>
 
         <div class="cards-wrap" id="projectsArea">
-<!-- ANTON KOTTAS DQVOLSKI DOBRA -->
-            <div class="project-card" data-roles="director cinematographer editor">
+
+          <!-- ANTON KOTTAS DQVOLSKI DOBRA (WIDE FEATURE CARD) -->
+          <div class="project-card wide" data-roles="director cinematographer editor">
             <div class="card-frame" style="aspect-ratio: 3 / 1;">
               <iframe src="https://player.vimeo.com/video/1032353441?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 frameborder="0" 
@@ -481,20 +491,21 @@
               </iframe>
             </div>
             <div class="proj-title">Anton Kottas - Dqvolski Dobra</div>
-            <div class="proj-role">Director  Cinematographer   Editor</div>
+            <div class="proj-role">Director   Cinematographer   Editor</div>
             <div class="proj-desc">
-              Music Video shot on Sony Venice with Atlas Orion anamorphic lenses. I spinned the camera practically on set, not in post.
+              Music video shot on Sony Venice with Atlas Orion anamorphic lenses. I spinned the camera practically on set, not in post.
             </div>
           </div>
-  <!-- Stand Your Ground -->
+
+          <!-- Stand Your Ground -->
           <div class="project-card" data-roles="writer director">
             <a href="https://www.imdb.com/title/tt30826955/" target="_blank" style="text-decoration:none; color:#000000;">
-              <div class="card-frame">
+              <div class="card-frame" style="aspect-ratio: 4 / 5;">
                 <img src="syg-cover.png" alt="Stand Your Ground poster" />
               </div>
             </a>
             <div class="proj-title">STAND YOUR GROUND</div>
-            <div class="proj-role">Feature Film Screenwriter</div>
+            <div class="proj-role">Feature Film   Screenwriter</div>
             <div class="proj-desc">
               Action thriller starring Peter Stormare and Eric Roberts.  
               Worldwide release 2025.  
@@ -502,35 +513,35 @@
             </div>
           </div>
 
-<!-- REFUGE -->
-<div class="project-card" data-roles="editor director cinematographer">
-  <a href="https://www.imdb.com/title/tt1234567/" target="_blank" style="text-decoration:none; color:#000000;">
-    <div class="card-frame" style="aspect-ratio: 16 / 9;">
-      <iframe
-        src="https://www.youtube.com/embed/wrfIn4vTHq8?si=ez3ju5B72GGoMCPs"
-        title="REFUGE Trailer"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </a>
-  <div class="proj-title">REFUGE</div>
-  <div class="proj-role">Feature Film Editor Splinter Unit Director and Cinematographer</div>
-  <div class="proj-desc">
-    Official trailer for the feature film <em>REFUGE</em>.  
-  </div>
-</div>
+          <!-- REFUGE -->
+          <div class="project-card" data-roles="editor director cinematographer">
+            <a href="https://www.imdb.com/title/tt1234567/" target="_blank" style="text-decoration:none; color:#000000;">
+              <div class="card-frame" style="aspect-ratio: 16 / 9;">
+                <iframe
+                  src="https://www.youtube.com/embed/wrfIn4vTHq8?si=ez3ju5B72GGoMCPs"
+                  title="REFUGE Trailer"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </a>
+            <div class="proj-title">REFUGE</div>
+            <div class="proj-role">Feature Film   Editor   Splinter Unit Director and Cinematographer</div>
+            <div class="proj-desc">
+              Official trailer for the feature film <em>REFUGE</em>.
+            </div>
+          </div>
 
-          
-
-
+          <!-- Placeholder third project -->
           <div class="project-card" data-roles="writer">
-            <div class="card-frame">
+            <div class="card-frame" style="aspect-ratio: 4 / 3;">
               <img src="another-project-still.jpg" alt="Another Project still" />
             </div>
             <div class="proj-title">ANOTHER PROJECT</div>
-            <div class="proj-role">Series pilot  Writer</div>
-            <div class="proj-desc">Pilot script and world building. Developed for streaming.</div>
+            <div class="proj-role">Series Pilot   Writer</div>
+            <div class="proj-desc">
+              Pilot script and world building. Developed for streaming.
+            </div>
           </div>
 
         </div>
@@ -567,7 +578,7 @@
         const filter = btn.getAttribute("data-filter");
         projectCards.forEach(card => {
           const roles = card.getAttribute("data-roles").split(" ");
-          card.style.display = filter === "all" || roles.includes(filter) ? "inline-block" : "none";
+          card.style.display = filter === "all" || roles.includes(filter) ? "block" : "none";
         });
       });
     });
