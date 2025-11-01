@@ -113,6 +113,11 @@
       text-align: left;
     }
 
+    .cards-wrap {
+  max-width: 960px;   /* was 700 or undefined before */
+  margin: 0 auto;
+}
+
     .intro-block {
       border: 2px solid #ffffff;
       border-right-color: #808080;
@@ -223,14 +228,14 @@
     .project-card {
       display: inline-block;
       vertical-align: top;
-      width: 260px;
+      width: 420px;
       max-width: 100%;
       background-color: #c0c0c0;
       border: 2px solid #ffffff;
       border-right-color: #808080;
       border-bottom-color: #808080;
       padding: 8px;
-      margin: 6px;
+      margin: 10px;
       font-size: 11px;
       color: #000000;
       font-family: "MS Sans Serif", Tahoma, sans-serif;
@@ -465,7 +470,7 @@
 
         <div class="cards-wrap" id="projectsArea">
 <!-- ANTON KOTTAS DQVOLSKI DOBRA -->
-            <div class="project-card wide" data-roles="director cinematographer editor">
+            <div class="project-card" data-roles="director cinematographer editor">
             <div class="card-frame" style="aspect-ratio: 3 / 1;">
               <iframe src="https://player.vimeo.com/video/1032353441?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 frameborder="0" 
