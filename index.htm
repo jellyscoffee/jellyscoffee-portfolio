@@ -236,7 +236,12 @@
       font-family: "MS Sans Serif", Tahoma, sans-serif;
       box-sizing: border-box;
     }
-
+.project-card.wide {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 12px auto;
+}
     .project-card:hover {
   background-color: #d0d0d0;
   border: 2px solid #000080;
@@ -475,8 +480,8 @@
             </div>
           </div>
 
-          <div class="project-card" data-roles="director cinematographer editor">
-            <div class="card-frame" style="aspect-ratio: 3 / 1; width: 100%; max-width: 700px;">
+          <div class="project-card wide" data-roles="cinematographer editor">
+            <div class="card-frame" style="aspect-ratio: 3 / 1;">
               <iframe src="https://player.vimeo.com/video/1032353441?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 frameborder="0" 
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
