@@ -233,18 +233,18 @@
     }
 
     .project-card {
-      background-color: #c0c0c0;
-      border: 2px solid #ffffff;
-      border-right-color: #808080;
-      border-bottom-color: #808080;
-      box-sizing: border-box;
-      font-family: "MS Sans Serif", Tahoma, sans-serif;
-      font-size: 11px;
-      color: #000000;
-      padding: 8px;
-      flex: 0 1 300px;
-      max-width: 300px;
-    }
+  background-color: #c0c0c0;
+  border: 2px solid #ffffff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  box-sizing: border-box;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #000000;
+  padding: 8px;
+  flex: 1 1 280px;  /* was fixed width — now flexible */
+  max-width: 400px; /* upper limit so wide screens don’t stretch too far */
+}
 
     .project-card.wide {
       flex: 0 1 600px;
