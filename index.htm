@@ -7,26 +7,27 @@
 
   <style>
     body {
-  background-color: #008080;
-  background-image:
-    url('jellyscoffee logo.jpg'),
-    repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,0.08) 0px,
-      rgba(255,255,255,0.08) 1px,
-      rgba(0,0,0,0) 1px,
-      rgba(0,0,0,0) 4px
-    );
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-size: 100px;
-  font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
-  font-size: 12px;
-  color: #000000;
-  margin: 0;
-  padding: 30px 0 60px;
-  text-align: center;
-}
+      background-color: #008080;
+      background-image:
+        url('jellyscoffee logo.jpg'),
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,0.08) 0px,
+          rgba(255,255,255,0.08) 1px,
+          rgba(0,0,0,0) 1px,
+          rgba(0,0,0,0) 4px
+        );
+      background-repeat: repeat;
+      background-attachment: fixed;
+      background-size: 100px;
+      font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+      font-size: 12px;
+      color: #000000;
+      margin: 0;
+      padding: 30px 0 60px;
+      text-align: center;
+    }
+
     a {
       color: #0000ff;
       text-decoration: underline;
@@ -117,7 +118,6 @@
       text-align: left;
     }
 
-    /* FLEX GRID FOR PROJECTS */
     .cards-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -242,8 +242,6 @@
       font-size: 11px;
       color: #000000;
       padding: 8px;
-
-      /* layout */
       flex: 0 1 300px;
       max-width: 300px;
     }
@@ -293,19 +291,19 @@
     }
 
     .proj-title {
-  font-size: 13px;
-  font-weight: bold;
-  color: #000000;
-  margin-bottom: 4px;
-  background-color: #ffff00;
-  border: 1px solid #808080;
-  border-right-color: #ffffff;
-  border-bottom-color: #ffffff;
-  padding: 2px 4px;
-  text-transform: uppercase;
-  display: inline-block;
-  box-shadow: 1px 1px 0 #000000;
-}
+      font-size: 13px;
+      font-weight: bold;
+      color: #000000;
+      margin-bottom: 4px;
+      background-color: #ffff00;
+      border: 1px solid #808080;
+      border-right-color: #ffffff;
+      border-bottom-color: #ffffff;
+      padding: 2px 4px;
+      text-transform: uppercase;
+      display: inline-block;
+      box-shadow: 1px 1px 0 #000000;
+    }
 
     .proj-role {
       font-size: 11px;
@@ -324,7 +322,6 @@
       border-right-color: #ffffff;
       border-bottom-color: #ffffff;
       padding: 6px;
-      min-height: 54px;
     }
 
     .footer-area {
@@ -369,7 +366,7 @@
       color: #000000;
     }
 
-    /* fixed blue taskbar-style status bar */
+    /* enhanced blue status bar */
     .status-bar {
       position: fixed;
       left: 0;
@@ -380,18 +377,18 @@
       border-left: 2px solid #ffffff;
       border-right: 2px solid #202020;
       border-bottom: 2px solid #202020;
-      height: 26px;
-      line-height: 22px;
-      font-size: 12px;
+      height: 36px;
+      line-height: 32px;
+      font-size: 13px;
       color: #ffffff;
       font-family: "MS Sans Serif", Tahoma, sans-serif;
       text-align: left;
-      padding: 0 10px;
+      padding: 0 12px;
       box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
       box-shadow: 0 -1px 0 #000 inset, 0 0 6px rgba(0,0,0,0.6);
       z-index: 9999;
     }
@@ -403,18 +400,18 @@
     }
 
     .status-box {
-      background-color: #ffff80; /* pale yellow highlight */
+      background-color: #ffff80;
       border: 2px solid #808080;
       border-right-color: #ffffff;
       border-bottom-color: #ffffff;
-      height: 16px;
-      min-width: 180px;
-      font-size: 11px;
-      line-height: 14px;
+      height: auto;
+      min-width: 200px;
+      font-size: 12px;
+      line-height: 16px;
       text-align: center;
       font-family: "Courier New", monospace;
       color: #000000;
-      padding: 0 6px;
+      padding: 4px 8px;
       box-sizing: border-box;
       animation: blinkCursor 1.5s steps(1) infinite;
     }
@@ -429,11 +426,7 @@
         flex: 1 1 auto;
       }
 
-      .project-card {
-        flex: 0 1 100%;
-        max-width: 100%;
-      }
-
+      .project-card,
       .project-card.wide {
         flex: 0 1 100%;
         max-width: 100%;
@@ -441,6 +434,17 @@
 
       .window {
         width: 95%;
+      }
+
+      .status-bar {
+        font-size: 12px;
+        height: 44px;
+        line-height: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 6px;
+        padding-bottom: 6px;
       }
     }
   </style>
@@ -491,21 +495,15 @@
 
         <div class="cards-wrap" id="projectsArea">
 
-          <!-- ANTON KOTTAS DQVOLSKI DOBRA (WIDE FEATURE CARD) -->
+          <!-- ANTON KOTTAS -->
           <div class="project-card wide" data-roles="director cinematographer editor">
             <div class="card-frame" style="aspect-ratio: 3 / 1;">
-              <iframe src="https://player.vimeo.com/video/1032353441?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-                title="Anton Kottas - Dqvolski Dobra">
-              </iframe>
+              <iframe src="https://player.vimeo.com/video/1032353441" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
             </div>
             <div class="proj-title">Anton Kottas - Dqvolski Dobra</div>
             <div class="proj-role">Director / Cinematographer / Editor</div>
             <div class="proj-desc">
-              Music video shot on Sony Venice with Atlas Orion anamorphic lenses. I spinned the camera practically on set, not in post.
+              Music video shot on Sony Venice with Atlas Orion anamorphic lenses. Camera spin done practically on set.
             </div>
           </div>
 
@@ -529,12 +527,7 @@
           <div class="project-card" data-roles="editor director cinematographer">
             <a href="https://www.imdb.com/title/tt1234567/" target="_blank" style="text-decoration:none; color:#000000;">
               <div class="card-frame" style="aspect-ratio: 16 / 9;">
-                <iframe
-                  src="https://www.youtube.com/embed/wrfIn4vTHq8?si=ez3ju5B72GGoMCPs"
-                  title="REFUGE Trailer"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <iframe src="https://www.youtube.com/embed/wrfIn4vTHq8" title="REFUGE Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </a>
             <div class="proj-title">REFUGE</div>
@@ -544,16 +537,14 @@
             </div>
           </div>
 
-          <!-- Placeholder third project -->
+          <!-- ANOTHER PROJECT -->
           <div class="project-card" data-roles="writer">
             <div class="card-frame" style="aspect-ratio: 4 / 3;">
               <img src="another-project-still.jpg" alt="Another Project still" />
             </div>
             <div class="proj-title">ANOTHER PROJECT</div>
-            <div class="proj-role">Series Pilot   Writer</div>
-            <div class="proj-desc">
-              Pilot script and world building. Developed for streaming.
-            </div>
+            <div class="proj-role">Series Pilot / Writer</div>
+            <div class="proj-desc">Pilot script and world building. Developed for streaming.</div>
           </div>
 
         </div>
@@ -590,7 +581,7 @@
         const filter = btn.getAttribute("data-filter");
         projectCards.forEach(card => {
           const roles = card.getAttribute("data-roles").split(" ");
-          card.style.display = filter === "all" || roles.includes(filter) ? "block" : "none";
+          card.style.display = filter === "all" || roles.includes(filter) ? "inline-block" : "none";
         });
       });
     });
