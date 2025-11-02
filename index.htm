@@ -678,6 +678,136 @@
 .meta-updated {
   opacity: 0.8;
 }
+
+
+    /* === BOOT PANEL (fake startup console) === */
+
+.boot-panel {
+  background-color: #000000;
+  color: #00ff66;                 /* CRT green */
+  border: 2px solid #00ff66;
+  box-shadow:
+    0 0 8px #00ff66,
+    0 0 2px #00ff66 inset;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 12px 12px 10px;
+  max-width: 100%;
+  margin: 12px auto 16px auto;
+  position: relative;
+}
+
+/* top status bar strip inside the panel */
+.boot-header {
+  background-color: #001a00;
+  border: 1px solid #00ff66;
+  padding: 4px 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* left side of header: "system name" */
+.boot-brand {
+  font-weight: bold;
+}
+
+/* right side of header: fake timestamp or version */
+.boot-meta {
+  color: #00c84a;
+  font-weight: normal;
+}
+
+/* individual console lines */
+.boot-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* label part like 'Initializing' */
+.boot-label {
+  color: #00ff66;
+}
+
+/* status part like OK / FAIL */
+.boot-status {
+  font-weight: bold;
+  min-width: 32px;
+  text-align: left;
+  color: #00ff66;
+}
+
+.boot-status.fail {
+  color: #ff4444;
+}
+
+/* "progress bar" line */
+.boot-progress-wrap {
+  margin-top: 6px;
+  background-color: #001a00;
+  border: 1px solid #00ff66;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+/* the fake bar */
+.boot-bar-shell {
+  background-color: #000000;
+  border: 1px solid #00ff66;
+  padding: 2px 3px;
+  min-width: 120px;
+  max-width: 200px;
+  box-shadow: 0 0 4px #00ff66 inset;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  white-space: nowrap;
+}
+
+/* blinking cursor at the bottom */
+.boot-cursor-line {
+  margin-top: 8px;
+  font-size: 10px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.boot-cursor {
+  width: 8px;
+  height: 10px;
+  background-color: #00ff66;
+  box-shadow: 0 0 6px #00ff66;
+  animation: blinkCRT 0.8s steps(1) infinite;
+}
+
+@keyframes blinkCRT {
+  50% { opacity: 0; }
+}
+
+/* slightly tighten gap below the boot panel before the filter buttons */
+.filter-panel {
+  margin-top: 0;
+}
+    
   </style>
 </head>
 
@@ -701,36 +831,51 @@
 
     <div class="window-body">
 
- <div class="intro-block" style="text-align:center;">
+<div class="boot-panel">
 
- <div style="font-size:26px; font-weight:bold; color:#000000; line-height:1.2; text-shadow: 1px 1px 0 #000, -1px -1px 0 #fff;">
-  Sergey Zhelezko
-</div>
-
-  <div style="margin-top:6px; font-size:13px; letter-spacing:0.5px; text-transform:uppercase; color:#000000;">
-    WRITER&nbsp;&nbsp;DIRECTOR&nbsp;&nbsp;CINEMATOGRAPHER&nbsp;&nbsp;EDITOR
+  <div class="boot-header">
+    <div class="boot-brand">JELLY'S COFFEE MEDIA SYSTEM 97</div>
+    <div class="boot-meta">Build 1.0.0 / Video Subsystem Online</div>
   </div>
 
-  <div style="
-    margin-top:16px;
-    background-color:#ffffcc;
-    border:1px solid #000;
-    text-align:left;
-    padding:6px 8px;
-    font-size:11px;
-    display:inline-block;
-    animation: blinkBorder 1.2s steps(2, start) infinite;">
-    <span style="font-weight:bold; color:#000;">⚠</span>
-    &nbsp;Did you also expect me to be a web designer?
+  <div class="boot-line">
+    <span class="boot-label">Copyright © 1992-2025 Sergey Zhelezko</span>
+    <span class="boot-status">All rights violently reserved</span>
+  </div>
+
+  <div class="boot-line">
+    <span class="boot-label">Mounting script volume</span>
+    <span class="boot-status">OK</span>
+  </div>
+
+  <div class="boot-line">
+    <span class="boot-label">Loading cinematography drivers</span>
+    <span class="boot-status">OK</span>
+  </div>
+
+  <div class="boot-line">
+    <span class="boot-label">Enabling practical camera spin module</span>
+    <span class="boot-status">OK</span>
+  </div>
+
+  <div class="boot-line">
+    <span class="boot-label">Web design skillset</span>
+    <span class="boot-status fail">NOT FOUND</span>
+  </div>
+
+  <div class="boot-progress-wrap">
+    <div>Booting <strong>SergeyZhelezko.exe</strong></div>
+    <div class="boot-bar-shell">█████████░ 90%</div>
+  </div>
+
+  <div class="boot-cursor-line">
+    <div>Ready.</div>
+    <div class="boot-cursor"></div>
   </div>
 
 </div>
 
-<style>
-@keyframes blinkBorder {
-  50% { border-color: #ff0000; }
-}
-</style>
+
 
 </div>
       
