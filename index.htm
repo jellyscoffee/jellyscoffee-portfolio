@@ -1259,10 +1259,10 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const audio = new Audio('startup.wav');
-  audio.volume = 0.8; // softer volume
+  audio.volume = 0.4; // softer volume
   setTimeout(() => {
     audio.play().catch(() => {}); // ignore browser autoplay restrictions
-  }, 2000); // plays after 2s of page load
+  }, 3000); // plays after 3s of page load
 });
 </script>
 
