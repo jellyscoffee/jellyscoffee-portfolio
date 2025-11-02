@@ -51,17 +51,17 @@
       flex-direction: column;
     }
 
-   .title-bar {
+  .title-bar {
   background-color: #000080;
   color: #ffffff;
-  height: 28px;            /* was 24px */
-  line-height: 28px;       /* was 24px */
+  height: 28px;
+  line-height: 28px;
   font-weight: bold;
-  font-size: 13px;         /* was 12px */
+  font-size: 13px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 6px;          /* was 0 4px */
+  padding: 0 6px;
   box-sizing: border-box;
 }
 
@@ -132,14 +132,108 @@
   }
 }
 
-    .intro-block {
-      border: 2px solid #ffffff;
-      border-right-color: #808080;
-      border-bottom-color: #808080;
-      background-color: #c0c0c0;
-      padding: 10px;
-      margin-bottom: 16px;
-    }
+    /* overall block */
+.intro-block {
+  border: 2px solid #ffffff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  background-color: #c0c0c0;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  color: #000000;
+}
+
+/* big headline row: "Welcome to Sergey Zhelezko" */
+.hero-name-line {
+  background-color: #dcdcdc;            /* slightly lighter gray, like the reference window content */
+  border: 2px solid #808080;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  box-shadow: 1px 1px 0 #000000;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.hero-hello {
+  font-size: 16px;
+  font-weight: normal;
+  color: #000000;
+  margin-right: 6px;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.hero-name {
+  font-size: 20px;               /* bigger than everything else on page */
+  font-weight: bold;
+  color: #000000;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* roles under the name */
+.hero-roles-line {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #000000;
+  background-color: #ffffff;
+  border: 2px solid #808080;
+  border-right-color: #ffffff;
+  border-bottom-color: #ffffff;
+  padding: 4px 6px;
+  display: inline-block;
+  box-shadow: 1px 1px 0 #000000;
+  margin-bottom: 10px;
+}
+
+/* flashing alert box for the joke */
+.hero-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 600px;
+
+  background-color: #ffffff;
+  border: 2px solid #ff0000; /* red outer frame for error energy */
+  border-right-color: #800000;
+  border-bottom-color: #800000;
+  padding: 8px 10px;
+  box-shadow: 2px 2px 0 #000000;
+  animation: flashBox 1.4s steps(2, jump-none) infinite;
+}
+
+.hero-alert-icon {
+  background-color: #ffff00;
+  border: 1px solid #000000;
+  box-shadow: 1px 1px 0 #000000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  color: #000000;
+  line-height: 1;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.hero-alert-text {
+  font-size: 11px;
+  font-family: "MS Sans Serif", Tahoma, sans-serif;
+  color: #000000;
+  line-height: 1.4;
+}
+
+@keyframes flashBox {
+  0%   { background-color: #ffffff; }
+  50%  { background-color: #fff2f2; }  /* faint pink flash, like error attention */
+  100% { background-color: #ffffff; }
+}
 
     .intro-name {
   font-size: 16px;
@@ -525,8 +619,8 @@
     <div class="title-bar">
       <div class="title-bar-left">
         <div class="title-icon">★</div>
-        <div>Sergey Zhelezko – Selected Works</div>
-      </div>
+        <div>Sergey Zhelezko - Selected Works.exe</div>
+</div>
       <div class="title-buttons">
         <div class="title-btn">_</div>
         <div class="title-btn">▢</div>
@@ -537,10 +631,21 @@
     <div class="window-body">
 
    <div class="intro-block">
-  <div class="intro-roles">Writer   Director   Cinematographer   Editor</div>
-  <div class="intro-joke">
-    Did you also expect me to be a web designer?
+
+  <div class="hero-name-line">
+    <span class="hero-hello">Welcome to</span>
+    <span class="hero-name">Sergey Zhelezko</span>
   </div>
+
+  <div class="hero-roles-line">
+    Writer   Director   Cinematographer   Editor
+  </div>
+
+  <div class="hero-alert">
+    <div class="hero-alert-icon">!</div>
+    <div class="hero-alert-text">Did you also expect me to be a web designer?</div>
+  </div>
+
 </div>
       
       <div class="filter-panel">
