@@ -746,18 +746,26 @@
 /* label part like 'Initializing' */
 .boot-label {
   color: #00ff66;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-/* status part like OK / FAIL */
+/* right side status text like OK / FAIL */
 .boot-status {
-  font-weight: bold;
+  color: #00ff66;
+  font-size: 11px;
+  font-weight: normal;
   min-width: 32px;
   text-align: left;
-  color: #00ff66;
+  opacity: 0.8;
 }
 
 .boot-status.fail {
   color: #ff4444;
+  font-weight: bold;
+  opacity: 1;
 }
 
 /* "progress bar" line */
