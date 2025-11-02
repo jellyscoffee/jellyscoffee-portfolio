@@ -616,7 +616,7 @@
         padding-bottom: 6px;
       }
     }
-    .meta-bar {
+   .meta-bar {
   background-color: #d0d0d0;
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
@@ -625,18 +625,30 @@
   font-family: "Courier New", monospace;
   font-size: 10px;
   color: #000000;
+
   padding: 4px 8px;
   box-sizing: border-box;
+
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  /* key: match main window width and center */
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .meta-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
   line-height: 1.4;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
 }
 
 .meta-counter {
