@@ -621,7 +621,7 @@
         const filter = btn.getAttribute("data-filter");
         projectCards.forEach(card => {
           const roles = card.getAttribute("data-roles").split(" ");
-          card.style.display = filter === "all" || roles.includes(filter) ? "inline-block" : "none";
+          card.style.display = (filter === "all" || roles.includes(filter)) ? "block" : "none";
         });
       });
     });
