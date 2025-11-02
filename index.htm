@@ -163,12 +163,16 @@
   border: 2px solid #808080;
   border-right-color: #ffffff;
   border-bottom-color: #ffffff;
-  padding: 4px 6px;
+  padding: 6px;
   margin-bottom: 8px;
   font-family: "Courier New", monospace;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.03em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
 .intro-roles::before {
@@ -180,7 +184,6 @@
   border-right-color: #ffffff;
   border-bottom-color: #ffffff;
   padding: 2px 4px;
-  margin-right: 6px;
   font-family: "MS Sans Serif", Tahoma, sans-serif;
   text-transform: none;
   letter-spacing: 0;
@@ -198,18 +201,18 @@
   border-bottom-color: #ffffff;
   padding: 6px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .intro-joke::before {
-  content: "⚠";
+  content: "ⓘ";
   font-family: "MS Sans Serif", Tahoma, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   color: #000000;
-  background-color: #ffff00;
+  background-color: #dcdcdc;
   border: 1px solid #808080;
   border-right-color: #ffffff;
   border-bottom-color: #ffffff;
@@ -528,13 +531,13 @@
 
     <div class="window-body">
 
-    <div class="intro-block">
-  <div class="intro-name">Sergey Zhelezko</div>
+   <div class="intro-block">
   <div class="intro-roles">Writer   Director   Cinematographer   Editor</div>
   <div class="intro-joke">
     Did you also expect me to be a web designer?
   </div>
 </div>
+      
       <div class="filter-panel">
         <div class="filter-label">Select credit type to filter projects</div>
         <div class="button-row">
