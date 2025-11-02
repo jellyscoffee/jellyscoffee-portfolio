@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
 
   <style>
@@ -807,6 +808,177 @@
 .filter-panel {
   margin-top: 0;
 }
+
+
+    @media (max-width: 480px) {
+
+  /* shrink side padding around the content window */
+  body {
+    padding: 16px 0 70px; /* less top padding, a little extra bottom so status bar doesn't cover text */
+    font-size: 11px;
+  }
+
+  .window {
+    width: 100%;
+    max-width: 100%;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-radius: 0;
+  }
+
+  /* top blue bar: tighten it and simplify spacing */
+  .title-bar {
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+  }
+
+  .title-buttons {
+    gap: 1px;
+  }
+
+  .title-btn {
+    width: 16px;
+    height: 16px;
+    line-height: 12px;
+    font-size: 9px;
+  }
+
+  /* boot panel readability boost */
+  .boot-panel {
+    font-size: 10px;
+    line-height: 1.35;
+    padding: 10px;
+    margin: 8px auto 12px auto;
+  }
+
+  .boot-header {
+    font-size: 9px;
+    line-height: 1.2;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .boot-line {
+    font-size: 10px;
+    flex-wrap: nowrap;
+    white-space: normal; /* allow wrap instead of clipping off screen */
+  }
+
+  .boot-progress-wrap {
+    font-size: 9px;
+  }
+
+  .boot-bar-shell {
+    min-width: 100px;
+    max-width: 140px;
+    font-size: 9px;
+  }
+
+  /* filter panel: make the label and buttons feel like mobile UI */
+  .filter-panel {
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
+
+  .filter-label {
+    font-size: 10px;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  .button-row {
+    gap: 4px;
+  }
+
+  .role-button {
+    flex: 1 1 calc(50% - 4px); /* 2 buttons per row on phones */
+    min-width: auto;
+    font-size: 10px;
+    padding: 4px 6px;
+    text-align: center;
+  }
+
+  /* project cards: make sure they take full width and breathe */
+  .cards-wrap {
+    column-count: 1;
+    column-gap: 0;
+    max-width: 100%;
+  }
+
+  .project-card {
+    margin: 0 0 14px 0;
+    font-size: 11px;
+    padding: 8px;
+    border-width: 2px;
+  }
+
+  .card-frame {
+    margin-bottom: 6px;
+  }
+
+  .proj-title {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  .proj-role {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .proj-desc {
+    font-size: 10px;
+    line-height: 1.4;
+    padding: 6px;
+  }
+
+  /* meta bar above the footer: stack tighter */
+  .meta-bar {
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+
+  .meta-inner {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  /* bottom status bar: make it not eat half the phone screen */
+  .status-bar {
+    font-size: 11px;
+    height: auto;
+    line-height: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .status-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .status-box {
+    min-width: auto;
+    font-size: 11px;
+    line-height: 14px;
+    padding: 4px 6px;
+  }
+
+  .status-right {
+    font-size: 10px !important;
+    line-height: 14px;
+  }
+}
+
     
   </style>
 </head>
