@@ -1237,5 +1237,25 @@
     }
   </script>
 
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bootLines = document.querySelectorAll(".boot-line, .boot-progress-wrap, .boot-cursor-line");
+  bootLines.forEach(line => {
+    line.style.opacity = 0;
+  });
+
+  let delay = 0;
+  const step = 400; // ms between each line
+  bootLines.forEach(line => {
+    setTimeout(() => {
+      line.style.opacity = 1;
+      line.style.transition = "opacity 0.3s ease-in";
+    }, delay);
+    delay += step;
+  });
+});
+</script>
+  
+
 </body>
 </html>
