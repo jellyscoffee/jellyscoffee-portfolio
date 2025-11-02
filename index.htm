@@ -812,9 +812,9 @@
 
     @media (max-width: 480px) {
 
-  /* shrink side padding around the content window */
+  /* base spacing */
   body {
-    padding: 16px 0 70px; /* less top padding, a little extra bottom so status bar doesn't cover text */
+    padding: 16px 0 60px;
     font-size: 11px;
   }
 
@@ -826,7 +826,7 @@
     border-radius: 0;
   }
 
-  /* top blue bar: tighten it and simplify spacing */
+  /* title bar (top blue strip) */
   .title-bar {
     font-size: 12px;
     height: 24px;
@@ -845,7 +845,7 @@
     font-size: 9px;
   }
 
-  /* boot panel readability boost */
+  /* boot panel */
   .boot-panel {
     font-size: 10px;
     line-height: 1.35;
@@ -863,8 +863,7 @@
 
   .boot-line {
     font-size: 10px;
-    flex-wrap: nowrap;
-    white-space: normal; /* allow wrap instead of clipping off screen */
+    white-space: normal;
   }
 
   .boot-progress-wrap {
@@ -877,7 +876,7 @@
     font-size: 9px;
   }
 
-  /* filter panel: make the label and buttons feel like mobile UI */
+  /* filter panel */
   .filter-panel {
     padding: 8px;
     margin-top: 4px;
@@ -886,23 +885,35 @@
 
   .filter-label {
     font-size: 10px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     text-align: left;
   }
 
   .button-row {
+    display: flex;
+    flex-wrap: wrap;
     gap: 4px;
   }
 
+  /* default buttons: 2 per row */
   .role-button {
-    flex: 1 1 calc(50% - 4px); /* 2 buttons per row on phones */
+    flex: 1 1 calc(50% - 4px);
     min-width: auto;
     font-size: 10px;
     padding: 4px 6px;
     text-align: center;
   }
 
-  /* project cards: make sure they take full width and breathe */
+  /* only "All Projects" full width */
+  .role-button-all {
+    flex: 1 1 100%;
+    min-width: 100%;
+    font-size: 12px;
+    padding: 8px 0;
+    text-align: center;
+  }
+
+  /* projects */
   .cards-wrap {
     column-count: 1;
     column-gap: 0;
@@ -913,7 +924,6 @@
     margin: 0 0 14px 0;
     font-size: 11px;
     padding: 8px;
-    border-width: 2px;
   }
 
   .card-frame {
@@ -936,7 +946,7 @@
     padding: 6px;
   }
 
-  /* meta bar above the footer: stack tighter */
+  /* meta bar */
   .meta-bar {
     font-size: 9px;
     padding: 6px 8px;
@@ -948,29 +958,29 @@
     text-align: center;
   }
 
-  /* bottom status bar: make it not eat half the phone screen */
+  /* bottom status bar */
   .status-bar {
     font-size: 11px;
-    height: auto;
-    line-height: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 8px 10px;
-    gap: 6px;
+    height: 28px;
+    line-height: 26px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    gap: 8px;
   }
 
   .status-left {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
   }
 
   .status-box {
     min-width: auto;
     font-size: 11px;
     line-height: 14px;
-    padding: 4px 6px;
+    padding: 2px 4px;
   }
 
   .status-right {
@@ -978,7 +988,6 @@
     line-height: 14px;
   }
 }
-
     
   </style>
 </head>
@@ -1058,7 +1067,7 @@
       <div class="filter-panel">
         <div class="filter-label">Select credit type to filter projects</div>
         <div class="button-row">
-          <button class="role-button active" data-filter="all">All Projects</button>
+          <button class="role-button role-button-all active" data-filter="all">All Projects</button>
           <button class="role-button" data-filter="writer">Writer</button>
           <button class="role-button" data-filter="director">Director</button>
           <button class="role-button" data-filter="cinematographer">Cinematographer</button>
