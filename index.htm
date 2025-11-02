@@ -122,6 +122,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: stretch;
       align-items: flex-start;
       gap: 12px;
       max-width: 960px;
@@ -242,6 +243,8 @@
   font-size: 11px;
   color: #000000;
   padding: 8px;
+        display: flex;           /* added */
+  flex-direction: column;  /* added */
   flex: 1 1 280px;  /* was fixed width — now flexible */
   max-width: 400px; /* upper limit so wide screens don’t stretch too far */
 }
