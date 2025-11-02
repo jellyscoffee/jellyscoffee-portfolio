@@ -1256,6 +1256,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
   
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = new Audio('startup.wav');
+  audio.volume = 0.4; // softer volume
+  setTimeout(() => {
+    audio.play().catch(() => {}); // ignore browser autoplay restrictions
+  }, 2000); // plays after 2s of page load
+});
+</script>
 
+  
 </body>
 </html>
