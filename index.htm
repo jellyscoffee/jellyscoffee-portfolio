@@ -1067,6 +1067,37 @@
   color: #000080 !important;
   text-decoration: underline;
 }
+
+
+/* --- FORCE STATUS BAR LINK COLORS + HOVER --- */
+.status-left a,
+.status-left a:link,
+.status-left a:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+.status-left a:hover,
+.status-left a:focus-visible {
+  color: #ffff80 !important;       /* hover = soft yellow */
+  text-decoration: underline !important;
+}
+
+/* email box link */
+.status-box a,
+.status-box a:link,
+.status-box a:visited {
+  color: #000000 !important;        /* default black in the yellow box */
+  text-decoration: none !important;
+}
+.status-box a:hover,
+.status-box a:focus-visible {
+  color: #000080 !important;        /* hover = deep blue */
+  text-decoration: underline !important;
+}
+
+
+
+    
   </style>
 </head>
 
@@ -1464,14 +1495,10 @@
   <div class="status-left">
     <div>Contact:</div>
     <div class="status-box">
-      <a href="mailto:contact@jellyscoffee.com" style="color:#000; text-decoration:none;">contact@jellyscoffee.com</a>
+      <a href="mailto:contact@jellyscoffee.com">contact@jellyscoffee.com</a>
     </div>
-    <a href="https://www.imdb.com/name/nm6864893" target="_blank" style="color:#ffff80; text-decoration:none; font-family:'MS Sans Serif', Tahoma, sans-serif; font-size:12px; margin-left:10px;">
-      IMDb
-    </a>
-     <a href="https://www.instagram.com/serg_jellyscoffee" target="_blank" style="color:#ffffff; text-decoration:none; margin-left:8px;">
-    Instagram
-       </a>
+    <a href="https://www.imdb.com/name/nm6864893" target="_blank" rel="noopener">IMDb</a>
+    <a href="https://www.instagram.com/serg_jellyscoffee" target="_blank" rel="noopener">Instagram</a>
   </div>
   <div class="status-right" style="font-size:10px; font-family:'Courier New', monospace;">
     Status: Ready
