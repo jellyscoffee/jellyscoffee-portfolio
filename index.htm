@@ -1045,7 +1045,28 @@
   color: #000080; /* deep blue hover for the email */
   text-decoration: underline;
 }
-    
+    /* status bar link styles */
+.status-left a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.status-left a:hover,
+.status-left a:focus-visible {
+  color: #ffff80 !important;
+  text-decoration: underline;
+}
+
+.status-box a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.status-box a:hover,
+.status-box a:focus-visible {
+  color: #000080 !important;
+  text-decoration: underline;
+}
   </style>
 </head>
 
@@ -1450,6 +1471,7 @@
     </a>
      <a href="https://www.instagram.com/serg_jellyscoffee" target="_blank" style="color:#ffffff; text-decoration:none; margin-left:8px;">
     Instagram
+       </a>
   </div>
   <div class="status-right" style="font-size:10px; font-family:'Courier New', monospace;">
     Status: Ready
