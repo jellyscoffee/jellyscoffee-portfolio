@@ -642,7 +642,66 @@
         padding-top: 6px;
         padding-bottom: 6px;
       }
-    }
+   .boot-header {
+    padding: 8px 10px;
+    font-size: 14px;          /* was 9 */
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;        /* keep on one line when possible */
+    gap: 8px;
+  }
+  .boot-brand {               /* left text */
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .boot-meta {                /* right text */
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* --- STATUS BAR SINGLE LINE ON MOBILE --- */
+  .status-bar {
+    font-size: 10px;
+    height: 28px;
+    line-height: 26px;
+    flex-direction: row;      /* force single row */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    gap: 8px;
+    white-space: nowrap;      /* prevent wrapping */
+  }
+  .status-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;             /* allow ellipsis to work */
+    overflow: hidden;
+  }
+  .status-box {
+    padding: 2px 4px;
+    font-size: 10px;
+    line-height: 14px;
+    max-width: 60vw;          /* keeps email from pushing status off */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .status-right {
+    margin-left: auto;
+    font-size: 10px !important;
+    line-height: 14px;
+    white-space: nowrap;
+  }
+}
    .meta-bar {
   background-color: #d0d0d0;
   border-top: 2px solid #ffffff;
