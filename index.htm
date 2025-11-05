@@ -895,53 +895,70 @@ word-break: break-word;     /* fallback */
 }
 
    /* === SUBTLE MOVING LOADING BAR (quieter, less attention) === */
+/* === MOVING LOADING BAR WITH BACKGROUND FILL === */
 @keyframes scrollBar {
   0%   { background-position: 0 0; }
-  100% { background-position: 12px 0; } /* move by one full pattern width */
+  100% { background-position: 12px 0; } /* matches pattern width for smooth loop */
 }
 
-.boot-bar-shell{
+.boot-bar-shell {
   position: relative;
   overflow: hidden;
-  height: 12px;                  /* slimmer */
+  height: 12px;
   line-height: 12px;
-  padding: 0 28px 0 0;           /* space for the % label */
-  background: #041804;           /* deep green, low contrast */
-  border: 1px solid #1f6e2a;     /* muted border */
-  box-shadow: inset 0 0 2px rgba(0,255,102,.15); /* soft CRT feel */
-  color: transparent;            /* hide original text */
+  padding: 0 28px 0 0; /* space for the percentage label */
+  background-color: #041804;
+  border: 1px solid #1f6e2a;
+  box-shadow: inset 0 0 2px rgba(0,255,102,.15);
   font-family: "Courier New", monospace;
+  color: transparent;
 }
 
+/* “filled” background up to 90% */
 .boot-bar-shell::before {
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  right: 34px; /* leaves room for % */
-  /* smaller gaps: 8px block + 4px gap = 12px pattern */
+  width: calc(90% - 36px); /* how much is filled */
+  background: linear-gradient(
+    to right,
+    rgba(0,255,102,0.4),
+    rgba(0,255,102,0.25)
+  );
+  border-right: 1px solid rgba(0,255,102,0.6);
+  box-shadow: inset 0 0 3px rgba(0,255,102,0.3);
+  overflow: hidden;
+}
+
+/* moving bright squares inside the filled area */
+.boot-bar-shell::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(90% - 36px); /* same as fill width */
   background: repeating-linear-gradient(
     90deg,
     #00ff66 0 8px,
     transparent 8px 12px
   );
   background-size: 12px 100%;
-  background-repeat: repeat-x;
-  animation: scrollBar 4s linear infinite;
+  animation: scrollBar 3.5s linear infinite;
   opacity: 0.9;
-  will-change: background-position;
+  pointer-events: none;
 }
 
-/* % label—small and dimmed */
-.boot-bar-shell::after{
-  content: "90%";
+/* static % label */
+.boot-bar-shell span {
   position: absolute;
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  color: #8cffb5;                /* faded mint */
-  opacity: .7;
+  color: #8cffb5;
+  opacity: 0.8;
   font-size: 10px;
   letter-spacing: .05em;
 }
