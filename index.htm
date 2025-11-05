@@ -897,7 +897,7 @@ word-break: break-word;     /* fallback */
    /* === SUBTLE MOVING LOADING BAR (quieter, less attention) === */
 @keyframes scrollBar {
   0%   { background-position: 0 0; }
-  100% { background-position: 16px 0; } /* move forward (left → right) */
+  100% { background-position: 12px 0; } /* move by one full pattern width */
 }
 
 .boot-bar-shell{
@@ -919,18 +919,18 @@ word-break: break-word;     /* fallback */
   top: 2px;
   bottom: 2px;
   left: 2px;
-  right: 34px; /* space for % */
-  /* one block = 8px bright, 8px gap → total repeat = 16px */
+  right: 34px; /* leaves room for % */
+  /* smaller gaps: 8px block + 4px gap = 12px pattern */
   background: repeating-linear-gradient(
     90deg,
     #00ff66 0 8px,
-    transparent 8px 16px
+    transparent 8px 12px
   );
-  background-size: 16px 100%;          /* repeat width */
+  background-size: 12px 100%;
   background-repeat: repeat-x;
-  animation: scrollBar 1.6s linear infinite; /* smooth pace */
+  animation: scrollBar 1.6s linear infinite;
   opacity: 0.9;
-  will-change: background-position;     /* hint for smoother anim */
+  will-change: background-position;
 }
 
 /* % label—small and dimmed */
