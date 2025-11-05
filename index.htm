@@ -635,7 +635,8 @@
     overflow: visible;
     text-overflow: clip;
     flex: 1 1 100%;
-    line-break: anywhere;    /* allow break anywhere if needed */
+    overflow-wrap: anywhere;    /* allow break anywhere */
+word-break: break-word;     /* fallback */
   }
 
   .boot-meta{
@@ -984,7 +985,7 @@
     <div class="title-bar">
       <div class="title-bar-left">
         <div class="title-icon">
-          <img src="jellyscoffee logo.jpg" alt="logo">
+          <img src="jellyscoffee_logo.jpg" alt="logo">
         </div>
         <div>Selected Works.exe</div>
 </div>
