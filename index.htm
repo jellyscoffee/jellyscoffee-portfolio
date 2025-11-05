@@ -619,30 +619,33 @@
     @media (max-width: 480px) {
      /* --- BOOT HEADER: scale + wrap cleanly on phones --- */
 .boot-header{
-  padding: 8px 10px;
-  font-size: clamp(11px, 3.5vw, 14px);
-  line-height: 1.25;
-  letter-spacing: 0.05em;
-  display: flex;
-  flex-wrap: wrap;           /* allow wrapping instead of overflow */
-  align-items: center;
-  gap: 4px;
-}
-.boot-brand{
-  font-size: clamp(13px, 4.6vw, 18px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;   /* trim long names nicely */
-  flex: 1 1 100%;            /* own line on mobile */
-}
-.boot-meta{
-  font-size: clamp(11px, 3.6vw, 14px);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 0.95;
-  flex: 1 1 100%;            /* second line under brand */
-}
+    padding: 8px 10px;
+    font-size: clamp(11px, 3.5vw, 14px);
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+    display: flex;
+    flex-wrap: wrap; /* let it wrap instead of ellipsis */
+    align-items: center;
+    gap: 4px;
+  }
+
+  .boot-brand{
+    font-size: clamp(13px, 4.6vw, 18px);
+    white-space: normal;     /* allow wrapping */
+    overflow: visible;
+    text-overflow: clip;
+    flex: 1 1 100%;
+    line-break: anywhere;    /* allow break anywhere if needed */
+  }
+
+  .boot-meta{
+    font-size: clamp(11px, 3.6vw, 14px);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    opacity: 0.95;
+    flex: 1 1 100%;
+  }
 
 /* On very small phones keep both lines tight */
 @media (max-width: 360px){
