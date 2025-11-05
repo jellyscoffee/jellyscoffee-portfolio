@@ -894,6 +894,23 @@ word-break: break-word;     /* fallback */
   50% { opacity: 0; }
 }
 
+    @keyframes scrollBar {
+  0%   { background-position: 0 0; }
+  100% { background-position: -1ch 0; }
+}
+
+.boot-bar-shell {
+  background-image: repeating-linear-gradient(
+    to right,
+    #00ff66 0 1ch,
+    transparent 1ch 2ch
+  );
+  background-size: 2ch 100%;
+  animation: scrollBar 0.3s steps(2, jump-none) infinite;
+  color: transparent; /* hide the text so only animation shows */
+  text-shadow: 0 0 0 #00ff66; /* keeps the CRT green color visible */
+}
+
 /* slightly tighten gap below the boot panel before the filter buttons */
 .filter-panel {
   margin-top: 0;
