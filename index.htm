@@ -897,7 +897,7 @@ word-break: break-word;     /* fallback */
    /* === SUBTLE MOVING LOADING BAR (quieter, less attention) === */
 @keyframes scrollBar {
   0%   { background-position: 0 0; }
-  100% { background-position: 32px 0; } /* move forward (left → right) */
+  100% { background-position: 16px 0; } /* move forward (left → right) */
 }
 
 .boot-bar-shell{
@@ -913,23 +913,24 @@ word-break: break-word;     /* fallback */
   font-family: "Courier New", monospace;
 }
 
-/* gentle candy-stripe that moves slowly */
 .boot-bar-shell::before {
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  right: 34px; /* leaves room for % */
+  right: 34px; /* space for % */
+  /* one block = 8px bright, 8px gap → total repeat = 16px */
   background: repeating-linear-gradient(
     90deg,
-    #00ff66 0 10px,      /* brighter green bars */
-    rgba(0, 255, 102, 0) 10px 20px
+    #00ff66 0 8px,
+    transparent 8px 16px
   );
-  animation: scrollBar 1.2s linear infinite; /* faster, smoother motion */
-  opacity: 0.9; /* brighter overall */
-  background-size: 20px 100%;
+  background-size: 16px 100%;          /* repeat width */
   background-repeat: repeat-x;
+  animation: scrollBar 1.6s linear infinite; /* smooth pace */
+  opacity: 0.9;
+  will-change: background-position;     /* hint for smoother anim */
 }
 
 /* % label—small and dimmed */
