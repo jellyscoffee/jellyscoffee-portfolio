@@ -894,21 +894,58 @@ word-break: break-word;     /* fallback */
   50% { opacity: 0; }
 }
 
-    @keyframes scrollBar {
+    /* === MOVING LOADING BAR === */
+@keyframes scrollBar {
   0%   { background-position: 0 0; }
   100% { background-position: -1ch 0; }
 }
 
 .boot-bar-shell {
-  background-image: repeating-linear-gradient(
-    to right,
+  position: relative;
+  overflow: hidden;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 8px;
+  background-color: #000000;
+  border: 1px solid #00ff66;
+  color: transparent;
+  font-family: "Courier New", monospace;
+}
+
+/* moving blocks animation inside the bar */
+.boot-bar-shell::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  right: 46px; /* space for the percentage */
+  background: repeating-linear-gradient(
+    90deg,
     #00ff66 0 1ch,
     transparent 1ch 2ch
   );
-  background-size: 2ch 100%;
-  animation: scrollBar 0.3s steps(2, jump-none) infinite;
-  color: transparent; /* hide the text so only animation shows */
-  text-shadow: 0 0 0 #00ff66; /* keeps the CRT green color visible */
+  animation: scrollBar 0.35s steps(2, jump-none) infinite;
+}
+
+/* static percentage text on the right */
+.boot-bar-shell::after {
+  content: "90%";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* accessibility: pause if user prefers no motion */
+@media (prefers-reduced-motion: reduce) {
+  .boot-bar-shell::before {
+    animation: none;
+  }
 }
 
 /* slightly tighten gap below the boot panel before the filter buttons */
