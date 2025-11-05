@@ -897,7 +897,7 @@ word-break: break-word;     /* fallback */
    /* === SUBTLE MOVING LOADING BAR (quieter, less attention) === */
 @keyframes scrollBar {
   0%   { background-position: 0 0; }
-  100% { background-position: -32px 0; } /* slow, gentle slide */
+  100% { background-position: 32px 0; } /* move forward (left → right) */
 }
 
 .boot-bar-shell{
@@ -914,20 +914,22 @@ word-break: break-word;     /* fallback */
 }
 
 /* gentle candy-stripe that moves slowly */
-.boot-bar-shell::before{
+.boot-bar-shell::before {
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  right: 34px; /* leaves room for the % */
+  right: 34px; /* leaves room for % */
   background: repeating-linear-gradient(
     90deg,
-    rgba(0,255,102,.25) 0 8px,    /* soft green block */
-    transparent 8px 16px
+    #00ff66 0 10px,      /* brighter green bars */
+    rgba(0, 255, 102, 0) 10px 20px
   );
-  animation: scrollBar 6s linear infinite; /* slow + unobtrusive */
-  opacity: .55;                             /* low contrast */
+  animation: scrollBar 1.2s linear infinite; /* faster, smoother motion */
+  opacity: 0.9; /* brighter overall */
+  background-size: 20px 100%;
+  background-repeat: repeat-x;
 }
 
 /* % label—small and dimmed */
