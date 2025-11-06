@@ -857,8 +857,10 @@ word-break: break-word;     /* fallback */
   line-height: 1.2;
 }
 
-/* === PROGRESS BAR: bright filled area + dim unfinished tail === */
-@keyframes scrollBar {
+/* === PROGRESS BAR: bright fill + dim tail + moving squares (single source of truth) === */
+:root { --progress: 0.90; } /* 90% — change this number only */
+
+@keyframes squaresScroll {
   0%   { background-position: 0 0; }
   100% { background-position: 12px 0; } /* smooth loop */
 }
@@ -868,49 +870,56 @@ word-break: break-word;     /* fallback */
   overflow: hidden;
   height: 14px;
   line-height: 14px;
-  background: linear-gradient(
-    to right,
-    rgba(0,255,102,0.4) 0%,
-    rgba(0,255,102,0.35) 90%,  /* main filled area */
-    rgba(0,255,102,0.12) 90%,  /* dim remainder */
-    rgba(0,255,102,0.1) 100%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,255,102,0.40) 0%,
+      rgba(0,255,102,0.35) calc(var(--progress) * 100%),
+      rgba(0,255,102,0.12) calc(var(--progress) * 100%),
+      rgba(0,255,102,0.10) 100%
+    );
   border: 1px solid #00ff66;
   box-shadow:
     inset 0 0 3px rgba(0,255,102,.3),
     0 0 6px rgba(0,255,102,.15);
   font-family: "Courier New", monospace;
-  color: transparent;
+  color: transparent; /* hide legacy text */
 }
 
-/* moving bright squares only inside filled area */
+/* moving bright squares only over the filled area */
 .boot-bar-shell::before {
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  width: calc(90% - 4px); /* matches filled area width */
+  width: calc(var(--progress) * 100% - 4px);
   background: repeating-linear-gradient(
     90deg,
     #00ff66 0 8px,
     transparent 8px 12px
   );
   background-size: 12px 100%;
-  animation: scrollBar 3.5s linear infinite;
+  animation: squaresScroll 3.5s linear infinite; /* slow & smooth */
   opacity: 0.85;
+  pointer-events: none;
 }
 
-/* static % label */
+/* static % chip on the right */
 .boot-bar-shell span {
   position: absolute;
   right: 6px;
   top: 50%;
   transform: translateY(-50%);
   color: #8cffb5;
-  opacity: 0.8;
+  opacity: 0.85;
   font-size: 10px;
   letter-spacing: .05em;
+}
+
+/* motion safety */
+@media (prefers-reduced-motion: reduce){
+  .boot-bar-shell::before { animation: none; }
 }
 
 /* blinking cursor at the bottom */
@@ -933,80 +942,6 @@ word-break: break-word;     /* fallback */
 
 @keyframes blinkCRT {
   50% { opacity: 0; }
-}
-
-   /* === SUBTLE MOVING LOADING BAR (quieter, less attention) === */
-/* === MOVING LOADING BAR WITH BACKGROUND FILL === */
-@keyframes scrollBar {
-  0%   { background-position: 0 0; }
-  100% { background-position: 12px 0; } /* matches pattern width for smooth loop */
-}
-
-.boot-bar-shell {
-  position: relative;
-  overflow: hidden;
-  height: 12px;
-  line-height: 12px;
-  padding: 0 28px 0 0; /* space for the percentage label */
-  background-color: #041804;
-  border: 1px solid #1f6e2a;
-  box-shadow: inset 0 0 2px rgba(0,255,102,.15);
-  font-family: "Courier New", monospace;
-  color: transparent;
-}
-
-/* “filled” background up to 90% */
-.boot-bar-shell::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  left: 2px;
-  width: calc(90% - 36px); /* how much is filled */
-  background: linear-gradient(
-    to right,
-    rgba(0,255,102,0.4),
-    rgba(0,255,102,0.25)
-  );
-  border-right: 1px solid rgba(0,255,102,0.6);
-  box-shadow: inset 0 0 3px rgba(0,255,102,0.3);
-  overflow: hidden;
-}
-
-/* moving bright squares inside the filled area */
-.boot-bar-shell::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  left: 2px;
-  width: calc(90% - 36px); /* same as fill width */
-  background: repeating-linear-gradient(
-    90deg,
-    #00ff66 0 8px,
-    transparent 8px 12px
-  );
-  background-size: 12px 100%;
-  animation: scrollBar 3.5s linear infinite;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-/* static % label */
-.boot-bar-shell span {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #8cffb5;
-  opacity: 0.8;
-  font-size: 10px;
-  letter-spacing: .05em;
-}
-
-/* accessibility */
-@media (prefers-reduced-motion: reduce){
-  .boot-bar-shell::before{ animation: none; }
 }
 
 /* slightly tighten gap below the boot panel before the filter buttons */
