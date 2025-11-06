@@ -860,7 +860,12 @@ word-break: break-word;     /* fallback */
 /* === PROGRESS BAR: robust (Safari/Chrome/Firefox) === */
 :root { --progress: 0.90; --chip: 36px; } /* 36px ≈ space for the % chip */
 
-.boot-bar-shell{
+    @keyframes squaresScroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 12px 0; }
+}
+
+.boot-bar-shell {
   position: relative;
   overflow: hidden;
   display: inline-block;
