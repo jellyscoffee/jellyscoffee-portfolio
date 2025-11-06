@@ -858,26 +858,18 @@ word-break: break-word;     /* fallback */
 }
 
 /* === PROGRESS BAR: robust (Safari/Chrome/Firefox) === */
-:root { --progress: 0.90; } /* 90% */
+:root { --progress: 0.90; --chip: 36px; } /* 36px ≈ space for the % chip */
 
-@keyframes squaresScroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 12px 0; }
-}
-
-.boot-bar-shell {
+.boot-bar-shell{
   position: relative;
   overflow: hidden;
   display: inline-block;
-  /* Pick any width you like; this keeps it stable under 220px */
-  width: 140px;
+  width: 280px;                 /* your chosen bar length */
   height: 14px;
   line-height: 14px;
 
-  /* Reserve room for the % chip on the right */
-  padding-right: 36px;
-  box-sizing: border-box;
-
+  /* base + dim tail background, but NOT under the chip */
+  padding-right: var(--chip);   /* reserve space for % chip */
   background:
     linear-gradient(
       to right,
@@ -886,6 +878,7 @@ word-break: break-word;     /* fallback */
       rgba(0,255,102,0.12) calc(var(--progress) * 100%),
       rgba(0,255,102,0.10) 100%
     );
+  background-clip: content-box; /* ← prevents painting under the right padding */
   border: 1px solid #00ff66;
   box-shadow:
     inset 0 0 3px rgba(0,255,102,.3),
@@ -894,15 +887,14 @@ word-break: break-word;     /* fallback */
   color: transparent;
 }
 
-/* moving bright squares only over the filled area (excluding the % chip) */
+/* moving bright squares only over the filled area (also stops before the chip) */
 .boot-bar-shell::before{
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  /* subtract the reserved 36px + 4px inset (2px left + 2px right) */
-  width: calc((100% - 36px - 4px) * var(--progress));
+  width: calc( (100% - var(--chip)) * var(--progress) - 4px );
   background: repeating-linear-gradient(
     90deg,
     #00ff66 0 8px,
@@ -910,9 +902,10 @@ word-break: break-word;     /* fallback */
   );
   background-size: 12px 100%;
   animation: squaresScroll 3.5s linear infinite;
-  opacity: 0.85;
+  opacity: .85;
   pointer-events: none;
 }
+
 
 /* % chip sits in the reserved space */
 .boot-bar-shell span{
