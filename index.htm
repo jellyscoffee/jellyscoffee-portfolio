@@ -858,10 +858,10 @@ word-break: break-word;     /* fallback */
 }
 
 /* === PROGRESS BAR: robust (Safari/Chrome/Firefox) === */
-:root { --progress: 0.90; } /* change only this number if you want 99% etc. */
+:root { --progress: 0.90; } /* 90% */
 
 @keyframes squaresScroll {
-  0% { background-position: 0 0; }
+  0%   { background-position: 0 0; }
   100% { background-position: 12px 0; }
 }
 
@@ -869,48 +869,52 @@ word-break: break-word;     /* fallback */
   position: relative;
   overflow: hidden;
   display: inline-block;
-  width: 210px;            /* fixed width (you can tweak 280–360px for taste) */
+  /* Pick any width you like; this keeps it stable under 220px */
+  width: clamp(180px, 28vw, 260px);
   height: 14px;
   line-height: 14px;
-  /* dim unfinished tail as base */
-  background: linear-gradient(to right, rgba(0,255,102,0.12), rgba(0,255,102,0.10));
+
+  /* Reserve room for the % chip on the right */
+  padding-right: 36px;
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,255,102,0.40) 0%,
+      rgba(0,255,102,0.35) calc(var(--progress) * 100%),
+      rgba(0,255,102,0.12) calc(var(--progress) * 100%),
+      rgba(0,255,102,0.10) 100%
+    );
   border: 1px solid #00ff66;
   box-shadow:
-    inset 0 0 3px rgba(0,255,102,.25),
-    0 0 6px rgba(0,255,102,.12);
+    inset 0 0 3px rgba(0,255,102,.3),
+    0 0 6px rgba(0,255,102,.15);
   font-family: "Courier New", monospace;
   color: transparent;
 }
 
-/* bright filled area driven by width, not gradient stops */
+/* moving bright squares only over the filled area (excluding the % chip) */
 .boot-bar-shell::before{
   content: "";
   position: absolute;
   top: 2px;
   bottom: 2px;
   left: 2px;
-  width: calc(var(--progress) * 100% - 4px);
-  background: linear-gradient(to right, rgba(0,255,102,0.45), rgba(0,255,102,0.35));
-  border-right: 1px solid rgba(0,255,102,0.6);
-  box-shadow: inset 0 0 3px rgba(0,255,102,0.30);
-}
-
-/* moving bright squares over the filled area only */
-.boot-bar-shell::after{
-  content: "";
-  position: absolute;
-  top: 2px;
-  bottom: 2px;
-  left: 2px;
-  width: calc(var(--progress) * 100% - 4px);
-  background: repeating-linear-gradient(90deg, #00ff66 0 8px, transparent 8px 12px);
+  /* subtract the reserved 36px + 4px inset (2px left + 2px right) */
+  width: calc((100% - 36px - 4px) * var(--progress));
+  background: repeating-linear-gradient(
+    90deg,
+    #00ff66 0 8px,
+    transparent 8px 12px
+  );
   background-size: 12px 100%;
   animation: squaresScroll 3.5s linear infinite;
   opacity: 0.85;
   pointer-events: none;
 }
 
-/* static % chip on the right */
+/* % chip sits in the reserved space */
 .boot-bar-shell span{
   position: absolute;
   right: 6px;
@@ -923,7 +927,7 @@ word-break: break-word;     /* fallback */
 }
 
 @media (prefers-reduced-motion: reduce){
-  .boot-bar-shell::after{ animation: none; }
+  .boot-bar-shell::before{ animation: none; }
 }
 
 /* blinking cursor at the bottom */
