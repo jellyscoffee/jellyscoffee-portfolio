@@ -857,37 +857,44 @@ word-break: break-word;     /* fallback */
   line-height: 1.2;
 }
 
-/* === PROGRESS BAR: bright fill + dim tail + moving squares (single source of truth) === */
-:root { --progress: 0.90; } /* 90% — change this number only */
+/* === PROGRESS BAR: robust (works in Safari/Chrome/Firefox) === */
+:root { --progress: 0.90; } /* 90% — change only this number (or override inline) */
 
 @keyframes squaresScroll {
-  0%   { background-position: 0 0; }
+  0% { background-position: 0 0; }
   100% { background-position: 12px 0; } /* smooth loop */
 }
 
-.boot-bar-shell {
+.boot-bar-shell{
   position: relative;
   overflow: hidden;
   height: 14px;
   line-height: 14px;
-  background:
-    linear-gradient(
-      to right,
-      rgba(0,255,102,0.40) 0%,
-      rgba(0,255,102,0.35) calc(var(--progress) * 100%),
-      rgba(0,255,102,0.12) calc(var(--progress) * 100%),
-      rgba(0,255,102,0.10) 100%
-    );
+  /* dim unfinished tail as base */
+  background: linear-gradient(to right, rgba(0,255,102,0.12), rgba(0,255,102,0.10));
   border: 1px solid #00ff66;
   box-shadow:
-    inset 0 0 3px rgba(0,255,102,.3),
-    0 0 6px rgba(0,255,102,.15);
+    inset 0 0 3px rgba(0,255,102,.25),
+    0 0 6px rgba(0,255,102,.12);
   font-family: "Courier New", monospace;
-  color: transparent; /* hide legacy text */
+  color: transparent;
 }
 
-/* moving bright squares only over the filled area */
-.boot-bar-shell::before {
+/* bright filled area driven by width, not gradient stops */
+.boot-bar-shell::before{
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  width: calc(var(--progress) * 100% - 4px); /* robust across engines */
+  background: linear-gradient(to right, rgba(0,255,102,0.45), rgba(0,255,102,0.35));
+  border-right: 1px solid rgba(0,255,102,0.6);
+  box-shadow: inset 0 0 3px rgba(0,255,102,0.30);
+}
+
+/* moving bright squares on top of the filled area only */
+.boot-bar-shell::after{
   content: "";
   position: absolute;
   top: 2px;
@@ -900,13 +907,13 @@ word-break: break-word;     /* fallback */
     transparent 8px 12px
   );
   background-size: 12px 100%;
-  animation: squaresScroll 3.5s linear infinite; /* slow & smooth */
+  animation: squaresScroll 3.5s linear infinite;
   opacity: 0.85;
   pointer-events: none;
 }
 
 /* static % chip on the right */
-.boot-bar-shell span {
+.boot-bar-shell span{
   position: absolute;
   right: 6px;
   top: 50%;
@@ -919,7 +926,7 @@ word-break: break-word;     /* fallback */
 
 /* motion safety */
 @media (prefers-reduced-motion: reduce){
-  .boot-bar-shell::before { animation: none; }
+  .boot-bar-shell::after{ animation: none; }
 }
 
 /* blinking cursor at the bottom */
