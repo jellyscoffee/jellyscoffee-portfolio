@@ -857,17 +857,20 @@ word-break: break-word;     /* fallback */
   line-height: 1.2;
 }
 
-/* === PROGRESS BAR: robust (works in Safari/Chrome/Firefox) === */
-:root { --progress: 0.90; } /* 90% — change only this number (or override inline) */
+/* === PROGRESS BAR: robust (Safari/Chrome/Firefox) === */
+:root { --progress: 0.90; } /* change only this number if you want 99% etc. */
 
 @keyframes squaresScroll {
   0% { background-position: 0 0; }
-  100% { background-position: 12px 0; } /* smooth loop */
+  100% { background-position: 12px 0; }
 }
 
 .boot-bar-shell{
   position: relative;
   overflow: hidden;
+  display: block;
+  flex: 1 1 420px;     /* makes it stretch nicely in the flex row */
+  min-width: 220px;
   height: 14px;
   line-height: 14px;
   /* dim unfinished tail as base */
@@ -887,13 +890,13 @@ word-break: break-word;     /* fallback */
   top: 2px;
   bottom: 2px;
   left: 2px;
-  width: calc(var(--progress) * 100% - 4px); /* robust across engines */
+  width: calc(var(--progress) * 100% - 4px);
   background: linear-gradient(to right, rgba(0,255,102,0.45), rgba(0,255,102,0.35));
   border-right: 1px solid rgba(0,255,102,0.6);
   box-shadow: inset 0 0 3px rgba(0,255,102,0.30);
 }
 
-/* moving bright squares on top of the filled area only */
+/* moving bright squares over the filled area only */
 .boot-bar-shell::after{
   content: "";
   position: absolute;
@@ -901,11 +904,7 @@ word-break: break-word;     /* fallback */
   bottom: 2px;
   left: 2px;
   width: calc(var(--progress) * 100% - 4px);
-  background: repeating-linear-gradient(
-    90deg,
-    #00ff66 0 8px,
-    transparent 8px 12px
-  );
+  background: repeating-linear-gradient(90deg, #00ff66 0 8px, transparent 8px 12px);
   background-size: 12px 100%;
   animation: squaresScroll 3.5s linear infinite;
   opacity: 0.85;
@@ -924,7 +923,6 @@ word-break: break-word;     /* fallback */
   letter-spacing: .05em;
 }
 
-/* motion safety */
 @media (prefers-reduced-motion: reduce){
   .boot-bar-shell::after{ animation: none; }
 }
